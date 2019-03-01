@@ -1,0 +1,29 @@
+<view class="main">
+    <view class="banner">
+        <image src="/image/list1.jpg"></image>
+    </view>
+
+    <view class="list-box">
+        <view class="newest-list">
+            <navigator url="../details/details">
+                <image src="/image/c4.jpg"></image>
+                <view class="newest-text"><text>详情图1</text></view>
+                <view class="newest-text"><text>￥</text></view>
+            </navigator>
+        </view>
+        <view class="newest-list">
+            <navigator url="../details/details">
+                <image src="/image/c5.jpg"></image>
+                <view class="newest-text"><text>详情图2</text></view>
+                <view class="newest-text"><text>￥</text></view>
+            </navigator>
+        </view>
+        <view class="newest-list">
+            <navigator url="../details/details">
+                <image src="/image/c6.jpg"></image>
+                <view class="newest-text"><text>详情图3</text></view>
+                <view class="newest-text"><text>￥</text></view>
+            </navigator>
+        </view>
+    </view>
+</view>
