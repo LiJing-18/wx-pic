@@ -8,22 +8,31 @@ Page({
             {name:'网红',id:'cucha'},
             {name:'主播',id:'danfan'}
         ],
-        detail:[],
+        detail:[
+          { id: '1', banner: '/image/A.png', cate: '演员', name: 'guowei', thumb: '/image/c6.jpg', name: 'name'},
+          { id: '1', banner: '/image/A.png', cate: '舞者', name: 'guowei', thumb: '/image/c6.jpg', name: 'name'},
+          { id: '1', banner: '/image/A.png', cate: '歌手', name: 'guowei', thumb: '/image/c6.jpg', name: 'name'},
+          { id: '1', banner: '/image/A.png', cate: '影后', name: 'guowei', thumb: '/image/c6.jpg', name: 'name'},
+          { id: '1', banner: '/image/A.png', cate: '网红', name: 'guowei', thumb: '/image/c6.jpg', name: 'name'},
+          { id: '1', banner: '/image/A.png', cate: '主播', name: 'guowei', thumb: '/image/c6.jpg', name: 'name'}
+        ],
         curIndex: 0,
         isScroll: false,
         toView: 'guowei'
     },
+
+
     onReady(){
         var self = this;
-        wx.request({
-            url:'http://www.gdfengshuo.com/api/wx/cate-detail.txt',
-            success(res){
-                console.log(res.data)
-                self.setData({
-                    detail : res.data.result
-                })
-            }
-        });
+        //wx.request({
+            //url:'http://www.gdfengshuo.com/api/wx/cate-detail.txt',
+            //success(res){
+                //console.log(res.data)
+                //self.setData({
+                   // detail : res.data.result
+                //})
+            //}
+        //});
         
     },
     switchTab(e){

@@ -2,10 +2,8 @@
   "pages": [
       "page/component/index",
       "page/component/category/category",
-      "page/component/cart/cart",
       "page/component/user/user",
       "page/component/address/address",
-      "page/component/orders/orders",
       "page/component/details/details",
       "page/component/list/list"
   ],
@@ -30,12 +28,12 @@
       "pagePath": "page/component/category/category",
       "iconPath": "image/22.png",
       "selectedIconPath": "image/21.png",
-      "text": "分类"
+      "text": "分类1"
     }, {
-      "pagePath": "page/component/cart/cart",
+      "pagePath": "page/component/category/category",
       "iconPath": "image/32.png",
       "selectedIconPath": "image/31.png",
-      "text": "购物车"
+      "text": "分类1"
     }, {
       "pagePath": "page/component/user/user",
       "iconPath": "image/42.png",
