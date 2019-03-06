@@ -12,7 +12,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class TagDto {
+public class TagDto{
 
 	
 	private String id;
@@ -32,4 +32,5 @@ public class TagDto {
 	 * 创建时间
 	 */
 	private String createDate;
+
 }

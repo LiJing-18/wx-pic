@@ -15,7 +15,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Document(collection="tag")
-public class Tag implements Cloneable{
+public class Tag{
 
 	@Id
 	private String id;
@@ -35,13 +35,4 @@ public class Tag implements Cloneable{
 	 * 创建时间
 	 */
 	private String createDate;
-	public Tag(String name, int weigth, String state, String createDate) {
-		super();
-		this.name = name;
-		this.weigth = weigth;
-		this.state = state;
-		this.createDate = createDate;
-	}
-	
-	
 }

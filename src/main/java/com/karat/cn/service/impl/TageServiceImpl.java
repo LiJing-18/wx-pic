@@ -2,6 +2,7 @@ package com.karat.cn.service.impl;
 
 import java.util.List;
 
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Criteria;
@@ -11,6 +12,7 @@ import org.springframework.stereotype.Repository;
 import com.karat.cn.dto.TagDto;
 import com.karat.cn.pojo.Tag;
 import com.karat.cn.service.TagService;
+import com.karat.cn.util.ResultVOUtil;
 import com.karat.cn.vo.ResultVo;
 
 @Repository
@@ -19,28 +21,30 @@ public class TageServiceImpl implements TagService{
 	@Autowired
 	private MongoTemplate mongoTemplate;
 	
+	@SuppressWarnings("rawtypes")
 	@Override
-	public ResultVo addTag(TagDto tag) {
+	public ResultVo addTag(TagDto tagDto) {
 		// TODO Auto-generated method stub
-		Tag t=new Tag(tag.getName(),tag.getWeigth(),tag.getState(),tag.getCreateDate());
-		mongoTemplate.insert(t);
-		return new ResultVo("添加成功","200");
+		Tag tag=new Tag();
+		BeanUtils.copyProperties(tagDto, tag);
+		mongoTemplate.insert(tag);
+		return ResultVOUtil.success(null);
 	}
 
+	@SuppressWarnings("rawtypes")
 	@Override
 	public ResultVo delTag(String id) {
-		ResultVo resultVo=null;
 		// TODO Auto-generated method stub
 		Tag tag=mongoTemplate.findById(id, Tag.class);
 		if(tag!=null){
 			mongoTemplate.remove(tag);
-			resultVo=new ResultVo("删除成功","200");
+			return ResultVOUtil.success(null);
 		}else{
-			resultVo=new ResultVo("当前标签不存在","201");
+			return ResultVOUtil.error(201,"当前标签不存在");
 		}
-		return resultVo;
 	}
 
+	@SuppressWarnings("rawtypes")
 	@Override
 	public ResultVo updateTag(TagDto tag) {
 		// TODO Auto-generated method stub
@@ -50,7 +54,7 @@ public class TageServiceImpl implements TagService{
 		t.setState(tag.getState());
 		t.setCreateDate(tag.getCreateDate());
 		mongoTemplate.save(tag);
-		return new ResultVo("修改成功","200");
+		return ResultVOUtil.success(null);
 	}
 
 	@Override
@@ -61,10 +65,16 @@ public class TageServiceImpl implements TagService{
 		return mongoTemplate.findOne(query, Tag.class);
 	}
 
+	@SuppressWarnings("rawtypes")
 	@Override
-	public List<Tag> selectAllTag() {
+	public ResultVo selectAllTag() {
 		// TODO Auto-generated method stub
-		return mongoTemplate.findAll(Tag.class);
+		List<Tag> tags=mongoTemplate.findAll(Tag.class);
+		if(tags.size()>0){
+			return ResultVOUtil.success(tags);
+		}else{
+			return ResultVOUtil.error(202,"数据为空");
+		}
 	}
 
 }

@@ -1,5 +1,7 @@
 package com.karat.cn.vo;
 
+import java.util.List;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -12,11 +14,22 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class ResultVo {
+public class ResultVo<T>{
 
+	/**
+	 * 错误码
+	 */
+	private Integer code;
+	/**
+	 * 提示信息
+	 */
 	private String msg;
-	
-	private String code;
-	
-	
+	/**
+	 *具体内容 
+	 */
+	private T data;
+	/**
+	 * 具体内容集合
+	 */
+	private List<T> list;
 }
