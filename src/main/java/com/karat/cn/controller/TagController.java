@@ -1,6 +1,7 @@
 package com.karat.cn.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -24,7 +25,12 @@ public class TagController {
 	}
 	
 	@RequestMapping(value="insert",produces="html/text;charset=UTF-8")
-	public String insert(TagDto dto){
+	public String insert(@RequestBody TagDto dto){
+		return JSON.toJSONString(service.addTag(dto));
+	}
+	
+	@RequestMapping(value="add",produces="html/text;charset=UTF-8")
+	public String add(TagDto dto){
 		return JSON.toJSONString(service.addTag(dto));
 	}
 	
