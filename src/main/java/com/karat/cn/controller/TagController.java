@@ -1,34 +1,30 @@
 package com.karat.cn.controller;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.alibaba.fastjson.JSON;
 import com.karat.cn.dto.TagDto;
-import com.karat.cn.pojo.Tag;
 import com.karat.cn.service.TagService;
-import com.karat.cn.vo.ResultVo;
+
+import io.swagger.annotations.Api;
 
 @RestController
 @RequestMapping("tag")
+@Api(tags="标签接口")
 public class TagController {
 
 	@Autowired
 	private TagService service;
 	
-	@RequestMapping("tagSelectAll")
-	@ResponseBody
-	public List<Tag> tagSelectAll(){
-		return service.selectAllTag();
+	@RequestMapping(value="tagSelectAll",produces="html/text;charset=UTF-8")
+	public String tagSelectAll(){
+		return JSON.toJSONString(service.selectAllTag());
 	}
 	
-	@RequestMapping("insert")
-	@ResponseBody
-	public ResultVo insert(Tag tag){
-		TagDto dto=new TagDto(tag.getName(),tag.getWeigth(),tag.getState(),tag.getCreateDate());
-		return service.addTag(dto);
+	@RequestMapping(value="insert",produces="html/text;charset=UTF-8")
+	public String insert(TagDto dto){
+		return JSON.toJSONString(service.addTag(dto));
 	}
 }

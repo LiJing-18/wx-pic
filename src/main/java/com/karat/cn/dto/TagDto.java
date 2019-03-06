@@ -32,13 +32,4 @@ public class TagDto {
 	 * 创建时间
 	 */
 	private String createDate;
-	public TagDto(String name, int weigth, String state, String createDate) {
-		super();
-		this.name = name;
-		this.weigth = weigth;
-		this.state = state;
-		this.createDate = createDate;
-	} 
-	
-	
 }

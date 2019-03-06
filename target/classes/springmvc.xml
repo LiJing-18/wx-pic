@@ -46,5 +46,6 @@
         <property name="prefix" value="/WEB-INF/pages/"></property>
         <!-- 文件的后缀 -->
         <property name="suffix" value=".jsp"></property>
-   </bean>      
+   </bean>  
+   
 </beans>
