@@ -19,4 +19,7 @@ public interface TagService {
 	
 	@SuppressWarnings("rawtypes")
 	ResultVo selectAllTag();
+	
+	@SuppressWarnings("rawtypes")
+	ResultVo delTagByName(String name);
 }

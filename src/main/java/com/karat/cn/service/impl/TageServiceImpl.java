@@ -76,5 +76,22 @@ public class TageServiceImpl implements TagService{
 			return ResultVOUtil.error(202,"数据为空");
 		}
 	}
+	
+	@SuppressWarnings("rawtypes")
+	@Override
+	public ResultVo delTagByName(String name) {
+		// TODO Auto-generated method stub
+		ResultVo vo=null;
+		Query query=new Query();
+		query.addCriteria(Criteria.where("name").is(name));
+		Tag tag=mongoTemplate.findOne(query, Tag.class);
+		if(tag!=null){
+			mongoTemplate.remove(tag);
+			vo=ResultVOUtil.success(null);
+		}else{
+			vo=ResultVOUtil.error(201,"当前标签不存在");
+		}
+		return vo;
+	}
 
 }

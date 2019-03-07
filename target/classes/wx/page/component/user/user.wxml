@@ -6,12 +6,10 @@
     </view>
     <view class="address-box">
         <view class="address-manage">
-            <navigator url="/page/component/address/address">地址管理</navigator>
+            <navigator url="/page/component/tag/tag">添加标签</navigator>
         </view>
-        <view wx:if="{{hasAddress}}" class="address-list">
-            <view>{{address.name}}</view>
-            <view>{{address.phone}}</view>
-            <view>{{address.detail}}</view>
+        <view class="address-manage">
+            <navigator url="/page/component/address/address">删除标签</navigator>
         </view>
     </view>
 </view>

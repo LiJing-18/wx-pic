@@ -28,11 +28,23 @@ public class TagController {
 	public String insert(@RequestBody TagDto dto){
 		return JSON.toJSONString(service.addTag(dto));
 	}
-	
+	/**
+	 * 定义头文件格式application/x-www-form-urlencoded才可以得到完整的dto
+	 * @param dto
+	 * @return
+	 */
 	@RequestMapping(value="add",produces="html/text;charset=UTF-8")
 	public String add(TagDto dto){
 		return JSON.toJSONString(service.addTag(dto));
 	}
-	
-	
+	/**
+	 * 定义头文件格式application/x-www-form-urlencoded才可以得到name
+	 * @param name
+	 * @return
+	 */
+	@RequestMapping(value="del",produces="html/text;charset=UTF-8")
+	public String del(String name){
+		System.out.println(name);
+		return JSON.toJSONString(service.delTagByName(name));
+	}
 }
