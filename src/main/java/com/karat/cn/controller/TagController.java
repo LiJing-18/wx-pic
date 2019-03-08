@@ -19,17 +19,22 @@ public class TagController {
 	@Autowired
 	private TagService service;
 	
+	
 	@RequestMapping(value="tagSelectAll",produces="html/text;charset=UTF-8")
 	public String tagSelectAll(){
 		return JSON.toJSONString(service.selectAllTag());
 	}
-	
+	/**
+	 * 可以配置头文件application/json(调通)
+	 * @param dto
+	 * @return
+	 */
 	@RequestMapping(value="insert",produces="html/text;charset=UTF-8")
 	public String insert(@RequestBody TagDto dto){
 		return JSON.toJSONString(service.addTag(dto));
 	}
 	/**
-	 * 定义头文件格式application/x-www-form-urlencoded才可以得到完整的dto
+	 * (暂时调不通了)
 	 * @param dto
 	 * @return
 	 */
