@@ -19,7 +19,9 @@ import java.util.regex.Pattern;
  */
 public class WebSpiderDemo1 {
  
-	/*public static void main(String[] args) throws Exception {
+	
+	//http://www.budejie.com/video/
+	public static void main(String[] args) throws Exception {
  
 		String source = "http://www.budejie.com/video/";
 		String destDir = "E:\\a\\";
@@ -33,14 +35,14 @@ public class WebSpiderDemo1 {
 			File destFile = new File(destDir + title + ".mp4");
 			download(url, destFile);
 		}
-	}*/
+	}
  
 	//https://135zyv6.xw0371.com/share/k52VHYiRoXobnsTU
-	public static void main(String[] args) throws Exception {
+	/*public static void main(String[] args) throws Exception {
 		System.out.println("123");
 		File destFile = new File("E:\\a\\123.mp4");
 		download("https://135zyv6.xw0371.com/share/k52VHYiRoXobnsTU",destFile);
-	}
+	}*/
 	/**
 	 * 通过视频的URL下载该视频并存入本地
 	 * 
@@ -59,7 +61,6 @@ public class WebSpiderDemo1 {
 		
 		while ((-1) != (len = is.read(buffer))) {
 			fos.write(buffer, 0, len);//写入本地
-			System.out.println("写入本地");
 		}
 		fos.flush();// 强制刷新
  
