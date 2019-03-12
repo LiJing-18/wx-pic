@@ -3,10 +3,11 @@
     "page/component/index",
     "page/component/category/category",
     "page/component/user/user",
-    "page/component/address/address",
+    "page/component/delTag/delTag",
     "page/component/details/details",
     "page/component/list/list",
-    "page/component/tag/tag"
+    "page/component/addTag/addTag",
+    "page/component/photo/photo"
   ],
   "window": {
     "navigationBarTextStyle": "#ffffff",
@@ -31,13 +32,13 @@
         "pagePath": "page/component/category/category",
         "iconPath": "image/22.png",
         "selectedIconPath": "image/21.png",
-        "text": "分类1"
+        "text": "分类"
       },
       {
-        "pagePath": "page/component/category/category",
+        "pagePath": "page/component/photo/photo",
         "iconPath": "image/32.png",
         "selectedIconPath": "image/31.png",
-        "text": "分类1"
+        "text": "上传"
       },
       {
         "pagePath": "page/component/user/user",

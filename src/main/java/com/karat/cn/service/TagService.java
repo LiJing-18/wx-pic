@@ -6,6 +6,7 @@ import com.karat.cn.vo.ResultVo;
 
 public interface TagService {
 
+
 	@SuppressWarnings("rawtypes")
 	ResultVo addTag(TagDto tag);
 	

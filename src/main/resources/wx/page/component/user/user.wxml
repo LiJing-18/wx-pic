@@ -6,10 +6,10 @@
     </view>
     <view class="address-box">
         <view class="address-manage">
-            <navigator url="/page/component/tag/tag">添加标签</navigator>
+            <navigator url="/page/component/addTag/addTag">添加标签</navigator>
         </view>
         <view class="address-manage">
-            <navigator url="/page/component/address/address">删除标签</navigator>
+            <navigator url="/page/component/delTag/delTag">删除标签</navigator>
         </view>
     </view>
 </view>

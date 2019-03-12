@@ -24,9 +24,20 @@ Page({
       },
       success: function (res) {
         console.log(res);
-        wx.redirectTo({
-          url: '../category/category'// 希望跳转过去的页面
-        })
+        if (res.data.code == 200) {
+          wx.showToast({
+            title: '添加成功',
+          })
+          setTimeout(function () {
+            wx.switchTab({
+              url: '/page/component/category/category',
+            })
+          }, 2000)
+        } else {
+          wx.showToast({
+            title: '添加失败',
+          })
+        }
       }
     })
   }
