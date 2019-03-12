@@ -7,4 +7,10 @@ public interface PhotoService {
 
 	@SuppressWarnings("rawtypes")
 	ResultVo addPhoto(Photo photo);
+	
+	@SuppressWarnings("rawtypes")
+	ResultVo selectAllPhoto();
+	
+	@SuppressWarnings("rawtypes")
+	ResultVo selectById(String id);
 }

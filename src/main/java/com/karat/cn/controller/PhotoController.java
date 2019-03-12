@@ -22,4 +22,14 @@ public class PhotoController {
 	public String uploadPhoto(@RequestBody Photo photo){
 		return JSON.toJSONString(service.addPhoto(photo));
 	}
+	
+	@RequestMapping(value="selectPhoto",produces="html/text;charset=UTF-8")
+	public String selectPhoto(){
+		return JSON.toJSONString(service.selectAllPhoto());
+	}
+
+	@RequestMapping(value="selectById",produces="html/text;charset=UTF-8")
+	public String selectById(String id){
+		return JSON.toJSONString(service.selectById(id));
+	}
 }

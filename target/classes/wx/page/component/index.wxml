@@ -30,67 +30,10 @@
     <view class="newest">
         <view class="newest-title"><text>最新</text></view>
         <view class="newest-box">
-            <view class="newest-list">
-                <navigator url="details/details">
-                    <image src="/image/s4.jpg"></image>
-                    <view class="newest-text"><text>某某人</text></view>
-                    <view class="newest-text"><text>￥</text></view>
-                </navigator>
-            </view>
-            <view class="newest-list">
-                <navigator url="details/details">
-                    <image src="/image/s5.jpg"></image>
-                    <view class="newest-text"><text>某某人</text></view>
-                    <view class="newest-text"><text>￥</text></view>
-                </navigator>
-            </view>
-            <view class="newest-list">
-                <navigator url="details/details">
-                    <image src="/image/s6.jpg"></image>
-                    <view class="newest-text"><text>某某人</text></view>
-                    <view class="newest-text"><text>￥</text></view>
-                </navigator>
-            </view>
-            <view class="newest-list">
-                <navigator url="details/details">
-                    <image src="/image/s4.jpg"></image>
-                    <view class="newest-text"><text>某某人</text></view>
-                    <view class="newest-text"><text>￥</text></view>
-                </navigator>
-            </view>
-            <view class="newest-list">
-                <navigator url="details/details">
-                    <image src="/image/s5.jpg"></image>
-                    <view class="newest-text"><text>某某人</text></view>
-                    <view class="newest-text"><text>￥</text></view>
-                </navigator>
-            </view>
-            <view class="newest-list">
-                <navigator url="details/details">
-                    <image src="/image/s6.jpg"></image>
-                    <view class="newest-text"><text>某某人</text></view>
-                    <view class="newest-text"><text>￥</text></view>
-                </navigator>
-            </view>
-            <view class="newest-list">
-                <navigator url="details/details">
-                    <image src="/image/s4.jpg"></image>
-                    <view class="newest-text"><text>某某人</text></view>
-                    <view class="newest-text"><text>￥</text></view>
-                </navigator>
-            </view>
-            <view class="newest-list">
-                <navigator url="details/details">
-                    <image src="/image/s5.jpg"></image>
-                    <view class="newest-text"><text>某某人</text></view>
-                    <view class="newest-text"><text>￥</text></view>
-                </navigator>
-            </view>
-            <view class="newest-list">
-                <navigator url="details/details">
-                    <image src="/image/s6.jpg"></image>
-                    <view class="newest-text"><text>某某人</text></view>
-                    <view class="newest-text"><text>￥</text></view>
+            <view class="newest-list" wx:for="{{category}}" wx:key="index" wx:for-item="val">
+                <navigator url="details/details?id={{val.id}}">
+                    <image src="{{val.url}}"></image>
+                    <view class="newest-text"><text>{{val.name}}</text></view>
                 </navigator>
             </view>
         </view>

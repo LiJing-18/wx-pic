@@ -3,15 +3,26 @@ const qiniuUploader = require("../../../util/qiniuUploader.js");
 
 // 初始化七牛相关参数
 function initQiniu() {
-  var options = {
-    region: 'ECN', // 华北区
-    //uptokenURL: '', //请求后端uptoken的url地址
-uptoken:'9JE_mWFLFzLdqdbOYYQsWz0D5bbo69HP3XPlKbh1:YAel_5Xf3xZN0nJS9fcjqpjsJmc=:eyJzY29wZSI6ImluMm9mZjUwIiwiZGVhZGxpbmUiOjE1NTIzNzI5NTV9',  //你请求后端的uptoken,和上面一样的，uptokenURL不填就找uptoken,填一个就可以了（这里是字符串数据不是url了）
-    domain: 'http://qiniu.in2off50.com', //yourBucketId:这个去你域名配置那里要
-    shouldUseQiniuFileName: false,
-    //key: '' 
-  };
-  qiniuUploader.init(options);
+  wx.request({
+    url: 'http://10.0.1.183:8080/photo/qiniu/getQiniuToken.action',
+    method: 'POST',
+    header: {
+      'Content-Type': 'application/json'
+    },
+    success: function (res) {
+      console.log(res);
+      var options = {
+        region: 'ECN', // 华北区
+        //uptokenURL: '', //请求后端uptoken的url地址
+        uptoken: res.data.data,  //你请求后端的uptoken,和上面一样的，uptokenURL不填就找uptoken,填一个就可以了（这里是字符串数据不是url了）
+        domain: 'http://qiniu.in2off50.com', //yourBucketId:这个去你域名配置那里要
+        shouldUseQiniuFileName: false,
+        //key: '' 
+      };
+      console.log(options);
+      qiniuUploader.init(options);
+    }
+  });
 }
 
 //获取应用实例
