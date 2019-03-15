@@ -1,6 +1,7 @@
 package com.karat.cn.zookeeper.javaApi;
 
 import java.io.IOException;
+import java.util.List;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
 
@@ -107,6 +108,12 @@ public class CreateDodeDemo implements Watcher{
 		//修改子路径
 		zooKeeper.setData(path+"/app","修改后的".getBytes(),-1);
 		TimeUnit.SECONDS.sleep(1);
+		
+		//获取指定节点下的子节点
+		List<String> list=zooKeeper.getChildren("/node", true);//第二个参数表示获取是否监控
+		System.out.println(list);
+		
+		
 	}
 	
 	

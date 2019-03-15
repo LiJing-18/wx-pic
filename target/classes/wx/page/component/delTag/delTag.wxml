@@ -1,8 +1,0 @@
-<view class="main">
-    <view class="form-box">
-        <form bindsubmit="formSubmit">
-            <input placeholder="标签名" name="name"/>
-            <button form-type="submit">删除</button>
-        </form>
-    </view>
-</view>

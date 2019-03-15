@@ -1,0 +1,10 @@
+java api的使用:节点的增删改查
+
+
+权限控制模式
+schema :授权对象
+ip     : 192.168.1.1
+Digest : username:password
+world  : 开放式的权限控制模式，数据节点的访问权限对所有用户开放。 world:anyone
+super  :超级用户，可以对zookeeper上的数据节点进行操作
+
