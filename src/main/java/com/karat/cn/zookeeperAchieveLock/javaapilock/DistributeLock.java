@@ -63,7 +63,7 @@ public class DistributeLock {
             if(!lessThanLockId.isEmpty()){
                 String prevLockID=lessThanLockId.last();//拿到比当前LOCKID这个几点更小的上一个节点
                 zooKeeper.exists(prevLockID,new LockWatcher(countDownLatch));//监控是否有删除节点的操作(释放锁)
-                countDownLatch.await(sessionTimeout, TimeUnit.MILLISECONDS);//等待锁释放(会话超时时间)
+                countDownLatch.await(sessionTimeout, TimeUnit.MILLISECONDS);//等待锁释放(会话超时时间)(挂起线程)
                 //上面这段代码意味着如果会话超时或者节点被删除（释放）了
                 System.out.println(Thread.currentThread().getName()+" 成功获取锁：["+lockID+"]");
             }
