@@ -169,11 +169,24 @@
             <artifactId>zookeeper</artifactId>
             <version>3.4.8</version>
         </dependency>
-        <!--zookeeper第三方客户端操作节点  -->
+        <!--zookeeper第三方客户端zkclient包 -->
         <dependency>
 		      <groupId>com.101tec</groupId>
 		      <artifactId>zkclient</artifactId>
 		      <version>0.10</version>
+		</dependency>
+		<!--zookeeper第三方客户端curator包  -->
+		<!-- 用来简化客户端连接的api -->
+		<dependency>
+		      <groupId>org.apache.curator</groupId>
+		      <artifactId>curator-framework</artifactId>
+		      <version>2.11.0</version>
+		</dependency>
+		<!--实现场景的封装  -->
+		<dependency>
+		      <groupId>org.apache.curator</groupId>
+		      <artifactId>curator-recipes</artifactId>
+		      <version>2.11.0</version>
 		</dependency>
   </dependencies>
   <build>

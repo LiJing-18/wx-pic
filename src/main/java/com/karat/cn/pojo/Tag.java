@@ -8,7 +8,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 /**
  * 标签
- * @author 开发
  *
  */
 @Data
@@ -20,7 +19,7 @@ public class Tag{
 	@Id
 	private String id;
 	/**
-	 * 标签名
+	 *姓名
 	 */
 	private String name;
 	/**

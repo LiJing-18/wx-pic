@@ -18,7 +18,7 @@ import java.util.concurrent.CountDownLatch;
 public class ApiOperatorDemo implements Watcher{
 	
 	private final static String CONNECTSTRING="47.107.121.215:2181";
-	
+	//计数器
 	private static CountDownLatch countDownLatch=new CountDownLatch(1);
 	
 	private static ZooKeeper zookeeper;
@@ -29,9 +29,9 @@ public class ApiOperatorDemo implements Watcher{
 		zookeeper=new ZooKeeper(CONNECTSTRING, 5000,new ApiOperatorDemo());
 		countDownLatch.await();
 		System.out.println("连接成功");
-		
+		//指定授权类型
 		ACL acl1=new ACL(ZooDefs.Perms.ALL,new Id("digest","root"));
-		ACL acl2=new ACL(ZooDefs.Perms.ALL,new Id("ip","47.107.121.215"));
+		ACL acl2=new ACL(ZooDefs.Perms.READ,new Id("ip","47.107.121.215"));
 	    List<ACL> acls=new ArrayList<>();
 	    acls.add(acl1);
 	    acls.add(acl2);
@@ -49,7 +49,7 @@ public class ApiOperatorDemo implements Watcher{
     }
 
 	
-	//监控
+	//监控事件
     public void process(WatchedEvent watchedEvent) {
         //如果当前的连接状态是连接成功的，那么通过计数器去控制
         if(watchedEvent.getState()==Event.KeeperState.SyncConnected){
