@@ -91,7 +91,7 @@ public class DistributeLock {
         return false;
     }
 
-
+    //这种javaapi方式实现锁用在线上还有问题
     public static void main(String[] args) {
         final CountDownLatch latch=new CountDownLatch(10);
         Random random=new Random();

@@ -20,11 +20,12 @@ public class CuratorCreateSessionDemo {
 						new ExponentialBackoffRetry(1000, 3));//重试机制
 		curatorFramework1.start();
 		//fluent风格
-		CuratorFramework curatorFramework2=CuratorFrameworkFactory.builder().
-					connectString(CONNECTSTRING).
-					sessionTimeoutMs(5000).
-					retryPolicy(new ExponentialBackoffRetry(1000, 3))
-					.namespace("/curator").build();//namespace命名空间，在此节点下操作
+		CuratorFramework curatorFramework2=CuratorFrameworkFactory
+				.builder()
+				.connectString(CONNECTSTRING)
+				.sessionTimeoutMs(5000)
+				.retryPolicy(new ExponentialBackoffRetry(1000, 3))
+				.namespace("/curator").build();//namespace命名空间，在此节点下操作
 		curatorFramework2.start();
 		System.out.println("success");
 		
