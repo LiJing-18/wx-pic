@@ -17,10 +17,8 @@ import java.util.regex.Pattern;
  * @author cxd
  *
  */
-public class WebSpiderDemo1 {
+public class PChong {
  
-	
-	//http://www.budejie.com/video/
 	public static void main(String[] args) throws Exception {
  
 		String source = "http://www.budejie.com/video/";
@@ -37,12 +35,6 @@ public class WebSpiderDemo1 {
 		}
 	}
  
-	//https://135zyv6.xw0371.com/share/k52VHYiRoXobnsTU
-	/*public static void main(String[] args) throws Exception {
-		System.out.println("123");
-		File destFile = new File("E:\\a\\123.mp4");
-		download("https://135zyv6.xw0371.com/share/k52VHYiRoXobnsTU",destFile);
-	}*/
 	/**
 	 * 通过视频的URL下载该视频并存入本地
 	 * 

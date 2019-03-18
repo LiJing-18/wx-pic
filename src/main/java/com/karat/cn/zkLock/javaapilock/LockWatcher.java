@@ -1,4 +1,4 @@
-package com.karat.cn.zookeeperAchieveLock.javaapilock;
+package com.karat.cn.zkLock.javaapilock;
 
 import org.apache.zookeeper.WatchedEvent;
 import org.apache.zookeeper.Watcher;

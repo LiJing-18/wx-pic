@@ -1,4 +1,4 @@
-package com.karat.cn.zookeeperAchieveLock.zkclient;
+package com.karat.cn.zkLock.zkclient;
 
 import java.io.Serializable;
 

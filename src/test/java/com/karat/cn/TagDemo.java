@@ -13,7 +13,7 @@ import com.karat.cn.pojo.Tag;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations="classpath:applicationContext.xml")
-public class TestDemo {
+public class TagDemo {
 
 	@Autowired
 	private MongoTemplate mongoTemplate;
