@@ -19,9 +19,9 @@ import java.util.concurrent.TimeUnit;
 public class DistributeLock {
 
 
-    private static final String ROOT_LOCKS="/LOCKS";//根节点
+	private static final String ROOT_LOCKS="/LOCKS";//根节点
 
-    private ZooKeeper zooKeeper;//zooKeeper实列
+    private ZooKeeper zooKeeper;
 
     private int sessionTimeout; //会话超时时间
 
@@ -29,9 +29,8 @@ public class DistributeLock {
 
     private final static byte[] data={1,2}; //节点的数据
 
-    private CountDownLatch countDownLatch=new CountDownLatch(1);//计数器
-    
-    //会话连接
+    private CountDownLatch countDownLatch=new CountDownLatch(1);
+
     public DistributeLock() throws IOException, InterruptedException {
         this.zooKeeper=ZookeeperClient.getInstance();
         this.sessionTimeout=ZookeeperClient.getSessionTimeout();
@@ -40,30 +39,28 @@ public class DistributeLock {
     //获取锁的方法
     public boolean lock(){
         try {
-        	//创建一个临时有序节点
+            //LOCKS/00000001
             lockID=zooKeeper.create(ROOT_LOCKS+"/",data, ZooDefs.Ids.
                     OPEN_ACL_UNSAFE, CreateMode.EPHEMERAL_SEQUENTIAL);
-            System.out.println(Thread.currentThread().getName()
-            		+"->成功创建了lock节点["+lockID+"], 开始去竞争锁");
-            //获取当前根节点下的所有子节点
+
+            
             List<String> childrenNodes=zooKeeper.getChildren(ROOT_LOCKS,true);//获取根节点下的所有子节点
-            //排序，从小到大（树节点）
+            //排序，从小到大
             SortedSet<String> sortedSet=new TreeSet<String>();
             for(String children:childrenNodes){
                 sortedSet.add(ROOT_LOCKS+"/"+children);
             }
             String first=sortedSet.first(); //拿到最小的节点
-            if(lockID.equals(first)){//如果刚创建的临时节点就是最小节点，那么就没有其它子节点，当前新建节点获取锁成功
+            if(lockID.equals(first)){
                 //表示当前就是最小的节点
                 System.out.println(Thread.currentThread().getName()+"->成功获得锁，lock节点为:["+lockID+"]");
                 return true;
             }
-            //当当前创建的临时节点不是最小节点时，说明之前已有创建的临时节点，之前临时节点正在使用锁，等待锁释放
             SortedSet<String> lessThanLockId=sortedSet.headSet(lockID);
             if(!lessThanLockId.isEmpty()){
                 String prevLockID=lessThanLockId.last();//拿到比当前LOCKID这个几点更小的上一个节点
-                zooKeeper.exists(prevLockID,new LockWatcher(countDownLatch));//监控是否有删除节点的操作(释放锁)
-                countDownLatch.await(sessionTimeout, TimeUnit.MILLISECONDS);//等待锁释放(会话超时时间)(挂起线程)
+                zooKeeper.exists(prevLockID,new LockWatcher(countDownLatch));
+                countDownLatch.await(sessionTimeout, TimeUnit.MILLISECONDS);
                 //上面这段代码意味着如果会话超时或者节点被删除（释放）了
                 System.out.println(Thread.currentThread().getName()+" 成功获取锁：["+lockID+"]");
             }
@@ -75,12 +72,10 @@ public class DistributeLock {
         }
         return false;
     }
-    //释放锁
+
     public boolean unlock(){
-        System.out.println(Thread.currentThread().getName()
-        		+"->开始释放锁:["+lockID+"]");
         try {
-            zooKeeper.delete(lockID,-1);//删除当前节点(释放锁)
+            zooKeeper.delete(lockID,-1);
             System.out.println("节点["+lockID+"]成功被删除");
             return true;
         } catch (InterruptedException e) {
@@ -91,7 +86,7 @@ public class DistributeLock {
         return false;
     }
 
-    //这种javaapi方式实现锁用在线上还有问题
+
     public static void main(String[] args) {
         final CountDownLatch latch=new CountDownLatch(10);
         Random random=new Random();
@@ -99,21 +94,21 @@ public class DistributeLock {
             new Thread(()->{
                 DistributeLock lock=null;
                 try {
-                    lock=new DistributeLock();//会话连接
-                    latch.countDown();//减一
-                    latch.await();//等待
-                    lock.lock();//获取锁
-                    Thread.sleep(random.nextInt(500));//睡眠
+                    lock=new DistributeLock();
+                    latch.countDown();
+                    latch.await();
+                    lock.lock();
+                    Thread.sleep(random.nextInt(500));
                 } catch (IOException e) {
                     e.printStackTrace();
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }finally {
                     if(lock!=null){
-                        lock.unlock();//释放锁
+                        lock.unlock();
                     }
                 }
-            }).start();//启动线程
+            }).start();
         }
     }
 }

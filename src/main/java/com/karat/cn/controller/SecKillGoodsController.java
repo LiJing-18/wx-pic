@@ -18,6 +18,8 @@ import com.karat.cn.util.TimeUtil;
 import com.karat.cn.util.OrderNumUtil;
 import com.karat.cn.util.ResultVOUtil;
 import com.karat.cn.vo.ResultVo;
+import com.karat.cn.zkLock.javaapilock.lockDemo.Lock;
+
 import io.swagger.annotations.Api;
 
 @RequestMapping("goods")
@@ -60,7 +62,7 @@ public class SecKillGoodsController {
 				try {
 					//请求锁资源，如果没有得到锁资源，就会执行重试策略
 					mutex.acquire();
-					BeanUtils.copyProperties(buyPhoto(), vo);
+					BeanUtils.copyProperties(buyGoods(), vo);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}finally {
@@ -80,7 +82,7 @@ public class SecKillGoodsController {
 	 * 作用：访问共享资源,获取并更新商品数量
 	 */
 	@SuppressWarnings("rawtypes")
-	public ResultVo buyPhoto() {
+	public ResultVo buyGoods() {
 		ResultVo vo=null;
 		//查看库存是否足够
         Goods goods=service.select("5c8f182cc6001853f8bd7fa3");
@@ -105,5 +107,35 @@ public class SecKillGoodsController {
         	vo=ResultVOUtil.error(201, "请检查传入参数");
         }
         return vo;
+	}
+	
+	
+	
+	/**
+	 * 原生javaApi实现加锁
+	 * @return
+	 */
+	@SuppressWarnings("rawtypes")
+	@RequestMapping(value="zookeeperApiLock",produces="html/text;charset=UTF-8")
+	public String zookeeperApiLock(){
+		 ResultVo vo=new ResultVo<>();
+		 new Thread(()->{
+			Lock lock = null;
+            try {
+            	lock = new Lock();
+                lock.acquireLock();//获取锁
+                BeanUtils.copyProperties(buyGoods(), vo);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}finally {
+				try {
+					lock.releaseLock();//释放锁
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+	        }
+         }).start();//启动线程
+		return JSON.toJSONString(vo);
 	}
 }
