@@ -1,5 +1,8 @@
 package com.karat.cn.controller;
 
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+
 import org.apache.curator.framework.CuratorFramework;
 import org.apache.curator.framework.CuratorFrameworkFactory;
 import org.apache.curator.framework.recipes.locks.InterProcessMutex;
@@ -18,6 +21,7 @@ import com.karat.cn.util.TimeUtil;
 import com.karat.cn.util.OrderNumUtil;
 import com.karat.cn.util.ResultVOUtil;
 import com.karat.cn.vo.ResultVo;
+import com.karat.cn.zkLock.lockTest.LockTest;
 
 import io.swagger.annotations.Api;
 
@@ -106,4 +110,27 @@ public class SecKillGoodsController {
         }
         return vo;
 	}
+	
+	
+	/*************************************************************************/
+	@SuppressWarnings("rawtypes")
+	@RequestMapping(value="index",produces="html/text;charset=UTF-8")
+	public String index(){
+		ResultVo vo=new ResultVo<>();
+		ExecutorService service = Executors.newFixedThreadPool(10);
+		service.execute(()-> {
+            LockTest test = new LockTest();
+            try {
+                test.lock();
+                BeanUtils.copyProperties(buyGoods(), vo);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            test.unlock();
+        });
+        service.shutdown();
+		return JSON.toJSONString(vo);
+	}
+	
+	
 }
