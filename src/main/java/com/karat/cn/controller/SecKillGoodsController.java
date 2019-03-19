@@ -1,7 +1,5 @@
 package com.karat.cn.controller;
 
-import java.util.concurrent.CountDownLatch;
-
 import org.apache.curator.framework.CuratorFramework;
 import org.apache.curator.framework.CuratorFrameworkFactory;
 import org.apache.curator.framework.recipes.locks.InterProcessMutex;
@@ -20,7 +18,6 @@ import com.karat.cn.util.TimeUtil;
 import com.karat.cn.util.OrderNumUtil;
 import com.karat.cn.util.ResultVOUtil;
 import com.karat.cn.vo.ResultVo;
-import com.karat.cn.zkLock.lockTest.DistributedLock;
 
 import io.swagger.annotations.Api;
 
@@ -33,7 +30,6 @@ public class SecKillGoodsController {
 	private GoodsService service;
 	@Autowired
 	private OrderService orderService;
-	
 	/**
 	 * 下单加锁
 	 * @return
