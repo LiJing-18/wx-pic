@@ -1,4 +1,4 @@
-package com.karat.cn.zkLock.zkclient;
+package com.karat.cn.zkMaster.zkApiMaster;
 
 import java.io.Serializable;
 

@@ -1,4 +1,4 @@
-package com.karat.cn.zkLock.zkclient;
+package com.karat.cn.zkMaster.zkApiMaster;
 
 import org.I0Itec.zkclient.ZkClient;
 import org.I0Itec.zkclient.serialize.SerializableSerializer;
