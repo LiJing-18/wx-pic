@@ -17,8 +17,8 @@ public class CuratorClientUtils {
 
 
     public static CuratorFramework getInstance(){
-        curatorFramework= CuratorFrameworkFactory.
-                newClient(CONNECTSTRING,5000,5000,
+        curatorFramework= CuratorFrameworkFactory
+        		.newClient(CONNECTSTRING,5000,5000,
                         new ExponentialBackoffRetry(1000,3));
         curatorFramework.start();
         return curatorFramework;

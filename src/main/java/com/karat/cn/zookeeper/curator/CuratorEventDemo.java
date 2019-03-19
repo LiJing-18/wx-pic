@@ -21,31 +21,34 @@ public class CuratorEventDemo {
      * TreeCache   pathcaceh+nodecache 的合体（监视路径下的创建、更新、删除事件），
      * 缓存路径下的所有子节点的数据
      */
-
-    public static void main(String[] args) throws Exception {
-        CuratorFramework curatorFramework=CuratorClientUtils.getInstance();
+    @SuppressWarnings("resource")
+	public static void main(String[] args) throws Exception {
+        //连接
+    	CuratorFramework curatorFramework=CuratorClientUtils.getInstance();
         /**
-         * 节点变化NodeCache
+         * 监视一个节点的创建、更新、删除
          */
-        //监听
-        /*NodeCache cache=new NodeCache(curatorFramework,"/curator",false);
-        cache.start(true);
+        //监听1
+        NodeCache cache1=new NodeCache(curatorFramework,"/curator",false);
+        cache1.start(true);
         //监听事件
-        cache.getListenable().addListener(()-> System.out.println("节点数据发生变化,变化后的结果" +
-                "："+new String(cache.getCurrentData().getData())));
+        cache1.getListenable().addListener(()-> 
+        				System.out.println("节点数据发生变化,变化后的结果" 
+        				+"："+new String(cache1.getCurrentData().getData())));
         //修改节点
-        curatorFramework.setData().forPath("/curator","666".getBytes());*/
-
+        curatorFramework.setData().forPath("/curator","666".getBytes());
 
         /**
-         * PatchChildrenCache
+         * PatchChildrenCache监听数据节点的增删改，会触发事件
          */
-
-        PathChildrenCache cache=new PathChildrenCache(curatorFramework,"/event",true);//参数2监听的节点，参数3是否缓存
-        cache.start(PathChildrenCache.StartMode.POST_INITIALIZED_EVENT);
-        // Normal/ BUILD_INITIAL_CACHE /POST_INITIALIZED_EVENT
-
-        cache.getListenable().addListener((curatorFramework1,pathChildrenCacheEvent)->{
+    	//监听2
+    	//子节点添加watcher
+        PathChildrenCache cache2=new PathChildrenCache(curatorFramework,"/event",true);//参数2监听的节点，参数3是否缓存
+        cache2.start(PathChildrenCache.StartMode.POST_INITIALIZED_EVENT);
+        // Normal(初始时为空)
+        // BUILD_INITIAL_CACHE(在这个方法返回之前调用rebuild()) 
+        // POST_INITIALIZED_EVENT(当Cache初始化数据后发送一个PathChildrenCacheEvent.Type#INITIALIZED事件)
+        cache2.getListenable().addListener((curatorFramework1,pathChildrenCacheEvent)->{
             switch (pathChildrenCacheEvent.getType()){
                 case CHILD_ADDED:
                     System.out.println("增加子节点");
@@ -59,11 +62,15 @@ public class CuratorEventDemo {
                 default:break;
             }
         });
-        //创建节点
+        /*==========================================================================*/
+        
+        
+        //创建持久化节点(PERSISTENT持久的)
         curatorFramework.create().withMode(CreateMode.PERSISTENT).forPath("/event","event".getBytes());
         TimeUnit.SECONDS.sleep(1);
         System.out.println("1");
-        //创建子节点
+        
+        //创建临时子节点(EPHEMERAL临时)
         curatorFramework.create().withMode(CreateMode.EPHEMERAL).forPath("/event/event1","1".getBytes());
         TimeUnit.SECONDS.sleep(1);
         System.out.println("2");
@@ -75,6 +82,9 @@ public class CuratorEventDemo {
         curatorFramework.delete().forPath("/event/event1");
         System.out.println("4");
          
+        
+        /*==========================================================================*/
+        
         System.in.read();
     }
 }
