@@ -1,4 +1,4 @@
-package com.karat.cn.zkLock.javaapilock.lockDemo;
+package com.karat.cn.zkLock.lockDemo;
 
 import org.apache.zookeeper.*;
 import org.apache.zookeeper.data.Stat;
@@ -8,7 +8,7 @@ import java.io.IOException;
 import java.util.Collections;
 import java.util.List;
 
-public class Lock{
+public class DistributedLock{
 
 	//ZooKeeper配置信息
     private ZooKeeper zkClient;
@@ -17,7 +17,7 @@ public class Lock{
     private String lockPath;//当前节点
     
     //构造方法中连接zookeeper
-    public Lock() throws IOException {
+    public DistributedLock() throws IOException {
         zkClient= new ZooKeeper("47.107.121.215:2181", 10000, new Watcher() {
             @Override
             public void process(WatchedEvent event) {

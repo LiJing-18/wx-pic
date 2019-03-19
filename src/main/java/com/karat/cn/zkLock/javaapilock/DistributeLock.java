@@ -1,4 +1,4 @@
-package com.karat.cn.zkLock.javaapilock;
+package com.karat.cn.zkLock.javaApiLock;
 
 import org.apache.zookeeper.CreateMode;
 import org.apache.zookeeper.KeeperException;

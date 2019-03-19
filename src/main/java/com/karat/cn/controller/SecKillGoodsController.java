@@ -1,5 +1,7 @@
 package com.karat.cn.controller;
 
+import java.util.concurrent.CountDownLatch;
+
 import org.apache.curator.framework.CuratorFramework;
 import org.apache.curator.framework.CuratorFrameworkFactory;
 import org.apache.curator.framework.recipes.locks.InterProcessMutex;
@@ -18,7 +20,7 @@ import com.karat.cn.util.TimeUtil;
 import com.karat.cn.util.OrderNumUtil;
 import com.karat.cn.util.ResultVOUtil;
 import com.karat.cn.vo.ResultVo;
-import com.karat.cn.zkLock.javaapilock.lockDemo.Lock;
+import com.karat.cn.zkLock.lockTest.DistributedLock;
 
 import io.swagger.annotations.Api;
 
@@ -107,35 +109,5 @@ public class SecKillGoodsController {
         	vo=ResultVOUtil.error(201, "请检查传入参数");
         }
         return vo;
-	}
-	
-	
-	
-	/**
-	 * 原生javaApi实现加锁
-	 * @return
-	 */
-	@SuppressWarnings("rawtypes")
-	@RequestMapping(value="zookeeperApiLock",produces="html/text;charset=UTF-8")
-	public String zookeeperApiLock(){
-		 ResultVo vo=new ResultVo<>();
-		 new Thread(()->{
-			Lock lock = null;
-            try {
-            	lock = new Lock();
-                lock.acquireLock();//获取锁
-                BeanUtils.copyProperties(buyGoods(), vo);
-			} catch (Exception e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}finally {
-				try {
-					lock.releaseLock();//释放锁
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-	        }
-         }).start();//启动线程
-		return JSON.toJSONString(vo);
 	}
 }
