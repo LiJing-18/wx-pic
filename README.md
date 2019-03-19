@@ -6,3 +6,4 @@
 4.生成唯一订单号<br>
 5.七牛上传图片功能<br>
 6.zookeeper实现秒杀上锁功能<br>
+7.模拟zookeeper的master选举<br>
