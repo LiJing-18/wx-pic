@@ -14,8 +14,6 @@ import java.util.regex.Pattern;
  
 /**
  * 功能：爬取某姐的小视频
- * @author cxd
- *
  */
 public class PChong {
  
@@ -126,7 +124,6 @@ public class PChong {
 	 * @return
 	 */
 	private static String getTitle(String info) {
- 
 		int len = info.length();
 		String title = info.substring(12, len - 1);
 		return title;
