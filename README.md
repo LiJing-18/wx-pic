@@ -8,3 +8,4 @@
 6.小程序端上传图片到七牛云存储<br>
 7.zookeeper实现秒杀上锁功能<br>
 8.模拟zookeeper的master选举<br>
+9.模拟reids锁<br>

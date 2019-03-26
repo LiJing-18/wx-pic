@@ -1,20 +1,20 @@
 package com.karat.cn.zookeeper.curator;
 
 import org.apache.curator.framework.CuratorFramework;
-import org.apache.curator.framework.CuratorFrameworkFactory;
+/*import org.apache.curator.framework.CuratorFrameworkFactory;
 import org.apache.curator.framework.api.BackgroundCallback;
-import org.apache.curator.framework.api.CuratorEvent;
+import org.apache.curator.framework.api.CuratorEvent;*/
 import org.apache.curator.framework.api.transaction.CuratorTransactionResult;
-import org.apache.curator.retry.ExponentialBackoffRetry;
+/*import org.apache.curator.retry.ExponentialBackoffRetry;
 import org.apache.zookeeper.CreateMode;
 import org.apache.zookeeper.data.Stat;
-
+*/
 import java.util.Collection;
-import java.util.Collections;
+/*import java.util.Collections;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.Executor;
 import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
+import java.util.concurrent.Executors;*/
 
 /**
  * curator对节点的增删改查
