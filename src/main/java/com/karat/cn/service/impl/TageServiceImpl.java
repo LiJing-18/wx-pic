@@ -1,6 +1,8 @@
 package com.karat.cn.service.impl;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,8 +11,11 @@ import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.stereotype.Repository;
 
+import com.alibaba.fastjson.JSONObject;
 import com.karat.cn.dto.TagDto;
 import com.karat.cn.pojo.Tag;
+import com.karat.cn.redis.dao.JedisClient;
+import com.karat.cn.redis.redisKey.RedisKey;
 import com.karat.cn.service.TagService;
 import com.karat.cn.util.ResultVOUtil;
 import com.karat.cn.vo.ResultVo;
@@ -20,6 +25,8 @@ public class TageServiceImpl implements TagService{
 
 	@Autowired
 	private MongoTemplate mongoTemplate;
+	@Autowired
+	private JedisClient redis;
 	
 	@SuppressWarnings("rawtypes")
 	@Override
@@ -69,12 +76,24 @@ public class TageServiceImpl implements TagService{
 	@Override
 	public ResultVo selectAllTag() {
 		// TODO Auto-generated method stub
-		List<Tag> tags=mongoTemplate.findAll(Tag.class);
-		if(tags.size()>0){
-			return ResultVOUtil.success(tags);
-		}else{
-			return ResultVOUtil.error(202,"数据为空");
-		}
+		Set<String> set=redis.smembers(RedisKey.TAG);
+		if(set.size()>0) {
+			return ResultVOUtil.success(set);
+		}else {
+			//没有缓存
+			List<Tag> tags=mongoTemplate.findAll(Tag.class);
+			if(tags.size()>0){
+				Set<String> tagList=new HashSet<>();
+				tags.forEach(t->{
+					tagList.add(JSONObject.toJSONString(t));
+				});
+				//添加缓存
+				redis.sadd(RedisKey.TAG,tagList);
+				return ResultVOUtil.success(tags);
+			}else{
+				return ResultVOUtil.error(202,"数据为空");
+			}
+		}		
 	}
 	
 	@SuppressWarnings("rawtypes")

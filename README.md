@@ -9,4 +9,5 @@
 7.zookeeper实现秒杀上锁功能<br>
 8.模拟zookeeper的master选举<br>
 9.模拟reids锁<br>
-10.redis简单使用lua脚本(可以将redis中的多个命令放在脚本中运行)
+10.redis使用lua脚本<br>
+11.redis缓存使用<br>

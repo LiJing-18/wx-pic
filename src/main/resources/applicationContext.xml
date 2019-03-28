@@ -36,5 +36,5 @@
          <constructor-arg name="databaseName" value="${mongo.dbname}"/>
      </bean>
      
-     
+     <import resource="redis.xml" />  
 </beans>

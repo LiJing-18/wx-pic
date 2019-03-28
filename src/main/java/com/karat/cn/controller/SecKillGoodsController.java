@@ -21,7 +21,7 @@ import com.karat.cn.util.TimeUtil;
 import com.karat.cn.util.OrderNumUtil;
 import com.karat.cn.util.ResultVOUtil;
 import com.karat.cn.vo.ResultVo;
-import com.karat.cn.zkLock.lockTest.LockTest;
+import com.karat.cn.zk.lock.lockTest.LockTest;
 
 import io.swagger.annotations.Api;
 
