@@ -4,7 +4,7 @@ const qiniuUploader = require("../../../util/qiniuUploader.js");
 // 初始化七牛相关参数
 function initQiniu() {
   wx.request({
-    url: 'http://10.0.1.183:8080/photo/qiniu/getQiniuToken.action',
+    url: 'http://localhost:8080/photo/qiniu/getQiniuToken.action',
     method: 'POST',
     header: {
       'Content-Type': 'application/json'
@@ -47,7 +47,7 @@ Page({
   formSubmit(e) {
     console.log('form发生了submit事件，携带数据为：', e.detail.value)
     wx.request({
-      url: 'http://10.0.1.183:8080/photo/photo/uploadPhoto.action',
+      url: 'http://localhost:8080/photo/photo/uploadPhoto.action',
       data: {
         "name": e.detail.value.name,
         "url": e.detail.value.url,

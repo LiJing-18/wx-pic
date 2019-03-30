@@ -19,7 +19,7 @@ Page({
     onReady(){
         var self = this;
         wx.request({
-            url:'http://10.0.1.183:8080/photo/tag/tagSelectAll.action',
+          url:'http://localhost:8080/photo/tag/tagSelectAll.action',
             success(res){
                 console.log(res.data)
                 console.log(res.data.data)

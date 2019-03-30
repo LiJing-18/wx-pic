@@ -1,5 +1,6 @@
 package com.karat.cn.service.impl;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -78,14 +79,18 @@ public class TageServiceImpl implements TagService{
 		// TODO Auto-generated method stub
 		Set<String> set=redis.smembers(RedisKey.TAG);
 		if(set.size()>0) {
-			return ResultVOUtil.success(set);
+			List<Tag> tags=new ArrayList<>();
+			set.forEach(i->{
+				tags.add(JSONObject.parseObject(i, Tag.class));//json字符串转对象
+			});
+			return ResultVOUtil.success(tags);
 		}else {
 			//没有缓存
 			List<Tag> tags=mongoTemplate.findAll(Tag.class);
 			if(tags.size()>0){
 				Set<String> tagList=new HashSet<>();
 				tags.forEach(t->{
-					tagList.add(JSONObject.toJSONString(t));
+					tagList.add(JSONObject.toJSONString(t));//对象转json
 				});
 				//添加缓存
 				redis.sadd(RedisKey.TAG,tagList);

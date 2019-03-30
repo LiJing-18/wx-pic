@@ -17,7 +17,7 @@ Page({
     console.log('携带数据为：', this.data)
     var that = this;
     wx.request({
-      url: 'http://10.0.1.183:8080/photo/photo/selectById.action?id=' + this.data.id,
+      url: 'http://localhost:8080/photo/photo/selectById.action?id=' + this.data.id,
       //data: {
       //"id": this.data.id
       //},

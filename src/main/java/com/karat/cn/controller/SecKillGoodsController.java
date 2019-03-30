@@ -1,8 +1,5 @@
 package com.karat.cn.controller;
 
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-
 import org.apache.curator.framework.CuratorFramework;
 import org.apache.curator.framework.CuratorFrameworkFactory;
 import org.apache.curator.framework.recipes.locks.InterProcessMutex;
@@ -15,15 +12,18 @@ import org.springframework.web.bind.annotation.RestController;
 import com.alibaba.fastjson.JSON;
 import com.karat.cn.pojo.Goods;
 import com.karat.cn.pojo.Order;
+import com.karat.cn.redis.demo.RedisManager;
+import com.karat.cn.redis.lock.dao.RedisDistributeLock;
+import com.karat.cn.redis.lock.dao.impl.DefaultRedisDistributeLock;
 import com.karat.cn.service.GoodsService;
 import com.karat.cn.service.OrderService;
 import com.karat.cn.util.TimeUtil;
 import com.karat.cn.util.OrderNumUtil;
 import com.karat.cn.util.ResultVOUtil;
 import com.karat.cn.vo.ResultVo;
-import com.karat.cn.zk.lock.lockTest.LockTest;
 
 import io.swagger.annotations.Api;
+import redis.clients.jedis.Jedis;
 
 @RequestMapping("goods")
 @RestController
@@ -34,6 +34,7 @@ public class SecKillGoodsController {
 	private GoodsService service;
 	@Autowired
 	private OrderService orderService;
+
 	/**
 	 * 下单加锁
 	 * @return
@@ -112,23 +113,26 @@ public class SecKillGoodsController {
 	}
 	
 	
-	/*************************************************************************/
+	
+	/*********************************redis锁****************************************/
 	@SuppressWarnings("rawtypes")
 	@RequestMapping(value="index",produces="html/text;charset=UTF-8")
 	public String index(){
 		ResultVo vo=new ResultVo<>();
-		ExecutorService service = Executors.newFixedThreadPool(10);
-		service.execute(()-> {
-            LockTest test = new LockTest();
-            try {
-                test.lock();
-                BeanUtils.copyProperties(buyGoods(), vo);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-            test.unlock();
-        });
-        service.shutdown();
+		try {
+			Jedis jedis = RedisManager.getJedis();//连接获取jedis实列
+			// 获取分布式锁对象
+			RedisDistributeLock locker = new DefaultRedisDistributeLock();
+			// 锁定
+			locker.lock(jedis, "seckill", "shop");
+			// TODO 业务逻辑
+			vo=buyGoods();
+			// 解锁
+			locker.release(jedis, "seckill", "shop");
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return JSON.toJSONString(vo);
 	}
 	
