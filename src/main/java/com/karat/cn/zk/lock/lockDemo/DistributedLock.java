@@ -12,9 +12,12 @@ public class DistributedLock{
 
 	//ZooKeeper配置信息
     private ZooKeeper zkClient;
+    //根节点
     private static final String LOCK_ROOT_PATH = "/LOCKS";
+    //临时有序节点
     private static final String LOCK_NODE_NAME = "Lock_";
-    private String lockPath;//当前节点
+    //当前节点
+    private String lockPath;
     
     //构造方法中连接zookeeper
     public DistributedLock() throws IOException {
@@ -79,7 +82,7 @@ public class DistributedLock{
             	// 阻塞当前进程，直到preLockPath释放锁，被watcher观察到，notifyAll后，重新acquireLock
                 System.out.println(" 等待前锁释放，prelocakPath："+preLockPath);
                 synchronized (watcher) {
-                    watcher.wait();
+                    watcher.wait();//同步等待
                 }
                 attemptLock();
             }
@@ -100,7 +103,7 @@ public class DistributedLock{
         public void process(WatchedEvent event) {
             System.out.println(event.getPath() + " 前锁释放");
             synchronized (this) {
-                notifyAll();
+                notifyAll();//唤醒线程
             }
         }
     };

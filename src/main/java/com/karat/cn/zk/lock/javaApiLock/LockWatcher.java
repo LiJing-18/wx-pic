@@ -17,8 +17,8 @@ public class LockWatcher implements Watcher{
     }
 
     public void process(WatchedEvent event) {
-        if(event.getType()== Event.EventType.NodeDeleted){//当前节点是否删除
-            latch.countDown();
+        if(event.getType()== Event.EventType.NodeDeleted){//监听到当前节点是否删除
+            latch.countDown();//唤醒休眠线程
         }
     }
 }

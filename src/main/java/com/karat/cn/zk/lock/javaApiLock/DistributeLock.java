@@ -25,9 +25,9 @@ public class DistributeLock {
 
     private int sessionTimeout; //会话超时时间
 
-    private String lockID; //记录锁节点id
+    private String lockID; //记录当前节点的id
 
-    private final static byte[] data={1,2}; //节点的数据
+    private final static byte[] data={1,2}; //定义节点的数据
 
     private CountDownLatch countDownLatch=new CountDownLatch(1);
 
@@ -41,7 +41,7 @@ public class DistributeLock {
         try {
             //LOCKS/00000001
             lockID=zooKeeper.create(ROOT_LOCKS+"/",data, ZooDefs.Ids.
-                    OPEN_ACL_UNSAFE, CreateMode.EPHEMERAL_SEQUENTIAL);
+                    OPEN_ACL_UNSAFE, CreateMode.EPHEMERAL_SEQUENTIAL);//创建节点
 
             
             List<String> childrenNodes=zooKeeper.getChildren(ROOT_LOCKS,true);//获取根节点下的所有子节点
@@ -52,19 +52,21 @@ public class DistributeLock {
             }
             String first=sortedSet.first(); //拿到最小的节点
             if(lockID.equals(first)){
-                //表示当前就是最小的节点
+                //表示当前就是最小的节点(当前节点拿到锁)
                 System.out.println(Thread.currentThread().getName()+"->成功获得锁，lock节点为:["+lockID+"]");
                 return true;
             }
+            
+            
             SortedSet<String> lessThanLockId=sortedSet.headSet(lockID);
             if(!lessThanLockId.isEmpty()){
-                String prevLockID=lessThanLockId.last();//拿到比当前LOCKID这个几点更小的上一个节点
+                String prevLockID=lessThanLockId.last();//拿到比当前LOCKID这个节点更小的上一个节点
                 zooKeeper.exists(prevLockID,new LockWatcher(countDownLatch));
                 countDownLatch.await(sessionTimeout, TimeUnit.MILLISECONDS);
-                //上面这段代码意味着如果会话超时或者节点被删除（释放）了
+                //上面这段代码意味着如果会话超时或者节点被删除（释放）了(那么自己就获得了锁)
                 System.out.println(Thread.currentThread().getName()+" 成功获取锁：["+lockID+"]");
+                return true;
             }
-            return true;
         } catch (KeeperException e) {
             e.printStackTrace();
         } catch (InterruptedException e) {
@@ -88,24 +90,22 @@ public class DistributeLock {
 
 
     public static void main(String[] args) {
-        final CountDownLatch latch=new CountDownLatch(10);
-        Random random=new Random();
-        for(int i=0;i<10;i++){
+    	
+        Random random=new Random();//随机数
+        for(int i=0;i<20;i++){
             new Thread(()->{
                 DistributeLock lock=null;
                 try {
-                    lock=new DistributeLock();
-                    latch.countDown();
-                    latch.await();
-                    lock.lock();
-                    Thread.sleep(random.nextInt(500));
-                } catch (IOException e) {
+                    lock=new DistributeLock();//连接zookeeper         
+                    lock.lock();//上锁
+                    Thread.sleep(random.nextInt(500));//随机休眠
+                }catch(IOException e) {
                     e.printStackTrace();
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }finally {
                     if(lock!=null){
-                        lock.unlock();
+                        lock.unlock();//释放锁
                     }
                 }
             }).start();

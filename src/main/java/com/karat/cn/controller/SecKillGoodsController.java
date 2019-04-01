@@ -1,9 +1,12 @@
 package com.karat.cn.controller;
 
+import java.io.IOException;
+
 import org.apache.curator.framework.CuratorFramework;
 import org.apache.curator.framework.CuratorFrameworkFactory;
 import org.apache.curator.framework.recipes.locks.InterProcessMutex;
 import org.apache.curator.retry.ExponentialBackoffRetry;
+import org.apache.zookeeper.KeeperException;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,6 +24,7 @@ import com.karat.cn.util.TimeUtil;
 import com.karat.cn.util.OrderNumUtil;
 import com.karat.cn.util.ResultVOUtil;
 import com.karat.cn.vo.ResultVo;
+import com.karat.cn.zk.lock.lockDemo.DistributedLock;
 
 import io.swagger.annotations.Api;
 import redis.clients.jedis.Jedis;
@@ -36,7 +40,7 @@ public class SecKillGoodsController {
 	private OrderService orderService;
 
 	/**
-	 * 下单加锁
+	 * 下单加锁(第三方客户端curator实现)
 	 * @return
 	 */
 	@SuppressWarnings({ "rawtypes"})
@@ -135,6 +139,27 @@ public class SecKillGoodsController {
 		}
 		return JSON.toJSONString(vo);
 	}
-	
+	/*********************************zk原生api锁****************************************/
+	@SuppressWarnings("rawtypes")
+	@RequestMapping(value="zkApiSecKill",produces="html/text;charset=UTF-8")
+	public String zkApiSecKill(){
+		ResultVo vo=new ResultVo<>();			
+		try {
+		    DistributedLock lock = new DistributedLock();
+			lock.acquireLock();//获取锁
+			vo=buyGoods();
+			lock.releaseLock();//释放锁
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (KeeperException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return JSON.toJSONString(vo);
+	}
 	
 }

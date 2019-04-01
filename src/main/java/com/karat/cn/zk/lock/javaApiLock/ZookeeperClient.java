@@ -18,15 +18,17 @@ public class ZookeeperClient {
 
     //获取连接
     public static ZooKeeper getInstance() throws IOException, InterruptedException {
-        final CountDownLatch conectStatus=new CountDownLatch(1);
+        
+    	final CountDownLatch conectStatus=new CountDownLatch(1);
+        
         ZooKeeper zooKeeper=new ZooKeeper(CONNECTSTRING, sessionTimeout, new Watcher() {
             public void process(WatchedEvent event) {
                 if(event.getState()== Event.KeeperState.SyncConnected){//连接成功状态
-                    conectStatus.countDown();
+                    conectStatus.countDown();//唤醒等待的线程
                 }
             }
         });
-        conectStatus.await();//等待
+        conectStatus.await();//当前线程休眠等待
         return zooKeeper;
     }
 
