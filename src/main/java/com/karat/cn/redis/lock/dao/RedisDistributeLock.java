@@ -22,7 +22,7 @@ public interface RedisDistributeLock {
     void unfairLock(Jedis jedis, String key, String uuid);
 
     /**
-     * 锁 默认非公平
+     * 上锁
      * @param jedis
      * @param key
      * @param uuid

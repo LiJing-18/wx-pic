@@ -8,6 +8,6 @@
 6.小程序端上传图片到七牛云存储<br>
 7.zookeeper实现秒杀上锁功能<br>
 8.模拟zookeeper的master选举<br>
-9.模拟reids锁<br>
-10.redis使用lua脚本<br>
-11.redis缓存使用<br>
+9.reids实现秒杀上锁功能<br>
+10.redis中lua脚本使用<br>
+11.service实现层加上redis缓存<br>

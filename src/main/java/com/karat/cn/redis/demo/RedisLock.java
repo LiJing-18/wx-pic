@@ -84,7 +84,7 @@ public class RedisLock {
 		 RedisLock lock=new RedisLock();
 		 //线程池
 		 ExecutorService service = Executors.newFixedThreadPool(10);
-	        for (int i = 0;i<100;i++){
+	        for (int i = 0;i<10;i++){
 	            service.execute(()-> {
 	            	String value=lock.getLock("aaa", 10000);
 	            	try {

@@ -37,7 +37,7 @@ public class TestRedisDistributeLock {
 	            }
 	            System.out.println(Thread.currentThread().getName() + "释放锁");
 
-	            locker.release(jedis, "aone", "qwerqwer");
+	            locker.release(jedis, "aone", "123");
 			} catch (Exception e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
