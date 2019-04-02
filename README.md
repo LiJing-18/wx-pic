@@ -1,10 +1,10 @@
 ## 微信小程序前后端交互Demo<br>
 ### 前端展示图<br>
 ![分类页](https://qiniu.in2off50.com/uploads/20190402/AF0448A5A657AB13.png)
+![管理页](https://qiniu.in2off50.com/uploads/20190402/B3884DA1857BCC52.png) 
 ![上传页](https://qiniu.in2off50.com/uploads/20190402/B3914665A980C15F.png) 
 ![首页](https://qiniu.in2off50.com/uploads/20190402/9C0744D8AD66D056.png)
-![管理页](https://qiniu.in2off50.com/uploads/20190402/B3884DA1857BCC52.png) 
-![详情页](https://qiniu.in2off50.com/uploads/20190402/C3BF4917AC69C56B.png) 
+
 ### 后端功能点
  序号  | 功能
  --------- | -------------
