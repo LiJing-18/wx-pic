@@ -1,6 +1,6 @@
 ## 微信小程序前后端交互Demo<br>
 ### 小程序展示图
-<img src="https://qiniu.in2off50.com/uploads/20190402/AF0448A5A657AB13.png" width="300" alt="分类页"/>
+<img src="https://qiniu.in2off50.com/uploads/20190402/AF0448A5A657AB13.png" width="200" height="300" alt="分类页"/>
 
 ### 功能点：<br>
  序号  | 功能
