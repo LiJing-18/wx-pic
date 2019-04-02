@@ -2,8 +2,8 @@
 ### 前端展示图<br>
 ![首页](https://qiniu.in2off50.com/uploads/20190402/9C0744D8AD66D056.png)
 ![分类页](https://qiniu.in2off50.com/uploads/20190402/AF0448A5A657AB13.png)
-![管理页](https://qiniu.in2off50.com/uploads/20190402/B3884DA1857BCC52.png) 
 ![上传页](https://qiniu.in2off50.com/uploads/20190402/B3914665A980C15F.png) 
+![管理页](https://qiniu.in2off50.com/uploads/20190402/B3884DA1857BCC52.png) 
 
 
 ### 后端功能点
