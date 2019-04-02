@@ -1,9 +1,9 @@
 ## 微信小程序前后端交互Demo<br>
 ### 前端展示图<br>
-![首页](https://qiniu.in2off50.com/uploads/20190402/9C0744D8AD66D056.png)
-![分类页](https://qiniu.in2off50.com/uploads/20190402/AF0448A5A657AB13.png)
-![上传页](https://qiniu.in2off50.com/uploads/20190402/B3914665A980C15F.png) 
-![管理页](https://qiniu.in2off50.com/uploads/20190402/B3884DA1857BCC52.png) 
+![首页](https://github.com/21karat/wx_pic/blob/master/src/main/webapp/pic/%E9%A6%96%E9%A1%B5.png)
+![分类页](https://github.com/21karat/wx_pic/blob/master/src/main/webapp/pic/%E5%88%86%E7%B1%BB.png)
+![上传页](https://github.com/21karat/wx_pic/blob/master/src/main/webapp/pic/%E4%B8%8A%E4%BC%A0%E9%A1%B5.png) 
+![管理页](https://github.com/21karat/wx_pic/blob/master/src/main/webapp/pic/%E6%88%91%E7%9A%84.png) 
 
 
 ### 后端功能点
