@@ -37,4 +37,5 @@
      </bean>
      
      <import resource="redis.xml" />  
+     <!-- <import resource="service-jms.xml" />  -->
 </beans>

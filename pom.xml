@@ -193,6 +193,20 @@
 		    <version>1.6.1.RELEASE</version>  
 		</dependency>
 		<!--redis-end--> 
+		
+		<!-- https://mvnrepository.com/artifact/org.apache.activemq/activemq-all -->
+		<dependency>
+		    <groupId>org.apache.activemq</groupId>
+		    <artifactId>activemq-all</artifactId>
+		    <version>5.10.0</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.springframework/spring-jms -->
+		<dependency>
+		    <groupId>org.springframework</groupId>
+		    <artifactId>spring-jms</artifactId>
+		    <version>5.1.4.RELEASE</version>
+		</dependency>
+		
   </dependencies>
   <build>
     <finalName>photo</finalName>
