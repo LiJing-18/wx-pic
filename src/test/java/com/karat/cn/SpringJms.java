@@ -17,7 +17,7 @@ public class SpringJms {
 
     public static void main(String[] args) {
     	send();
-    	getText();
+    	//getText();
     }
     //生产者
     @SuppressWarnings("resource")

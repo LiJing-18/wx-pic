@@ -13,7 +13,11 @@
    <!-- 加载Spring IOC容器 -->
    <context-param>
      <param-name>contextConfigLocation</param-name>
-     <param-value>classpath:applicationContext.xml</param-value>
+     <param-value>
+	     classpath:applicationContext.xml
+	     classpath:redis.xml
+	     classpath:service-jms.xml
+     </param-value>
    </context-param>
    
    <!-- spring上下文监听器 -->
