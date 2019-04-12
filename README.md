@@ -20,3 +20,4 @@
  9 | [reids实现秒杀上锁功能](https://github.com/21karat/wx_pic/blob/master/src/main/java/com/karat/cn/redis/lock/util/RedisTool.java)
  10 | [redis中lua脚本使用](https://github.com/21karat/wx_pic/blob/master/src/main/java/com/karat/cn/redis/demo/LuaDemo.java)
  11 | [service实现层加上redis缓存](https://github.com/21karat/wx_pic/blob/master/src/main/java/com/karat/cn/service/impl/PhotoServiceImpl.java)
+ 12	| [activeMQ消息队列](https://github.com/21karat/wx_pic/blob/master/src/main/java/com/karat/cn/activemq/SpringJmsListener.java)
