@@ -1,8 +1,6 @@
-package com.karat.cn.util;
+package com.karat.cn.vo;
 
 import java.util.List;
-
-import com.karat.cn.vo.ResultVo;
 
 public class ResultVOUtil {
 	//成功返回对象

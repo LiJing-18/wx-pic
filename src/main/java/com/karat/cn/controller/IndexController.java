@@ -1,6 +1,4 @@
 package com.karat.cn.controller;
-
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,14 +15,13 @@ import javax.servlet.http.HttpServletRequest;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-
 /**
  * 登陆注册
  * @author 开发
  *
  */
 @Controller
-@RequestMapping("/index/")
+@RequestMapping("index")
 public class IndexController extends BaseController{
 	
     ExecutorService fixedThreadPool = Executors.newFixedThreadPool(10);
@@ -34,12 +31,12 @@ public class IndexController extends BaseController{
 
 
 
-    @RequestMapping(value = "/index",method = RequestMethod.GET)
+    @RequestMapping(value = "index",method = RequestMethod.GET)
     public String index(HttpServletRequest request){
         if(request.getSession().getAttribute("user")==null){
-            return "/login";
+            return "login";
         }
-        return "/index";
+        return "index";
     }
 
     @RequestMapping(value = "/login",method = RequestMethod.GET)

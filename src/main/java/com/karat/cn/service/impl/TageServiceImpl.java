@@ -18,7 +18,7 @@ import com.karat.cn.pojo.Tag;
 import com.karat.cn.redis.dao.JedisClient;
 import com.karat.cn.redis.redisKey.RedisKey;
 import com.karat.cn.service.TagService;
-import com.karat.cn.util.ResultVOUtil;
+import com.karat.cn.vo.ResultVOUtil;
 import com.karat.cn.vo.ResultVo;
 
 @Repository

@@ -22,7 +22,7 @@ import com.karat.cn.service.GoodsService;
 import com.karat.cn.service.OrderService;
 import com.karat.cn.util.TimeUtil;
 import com.karat.cn.util.OrderNumUtil;
-import com.karat.cn.util.ResultVOUtil;
+import com.karat.cn.vo.ResultVOUtil;
 import com.karat.cn.vo.ResultVo;
 import com.karat.cn.zk.lock.lockDemo.DistributedLock;
 
