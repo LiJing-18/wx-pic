@@ -7,7 +7,7 @@
     <display-name>photo</display-name>
    
    <welcome-file-list>
-     <welcome-file>index/index</welcome-file>
+     <welcome-file>/WEB-INF/views/index.html</welcome-file>
    </welcome-file-list>
    
    <!-- 加载Spring IOC容器 -->
@@ -61,7 +61,7 @@
     <url-pattern>/...</url-pattern> -->
    <servlet-mapping>  
        <servlet-name>springMvc</servlet-name>  
-      <url-pattern>/index/index</url-pattern>  
+      <url-pattern>/WEB-INF/views/index.html</url-pattern>  
    </servlet-mapping>
    
    <!-- 可以配*.do, *.action(了解) / (重点): 所有的请求都会被spring mvc解析，但必须对静态资源文件进行过滤放行，建议大家使用这种方式 

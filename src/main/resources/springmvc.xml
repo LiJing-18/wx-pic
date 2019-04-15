@@ -26,7 +26,7 @@
    <!--对静态资源文件的访问  必须要设置，因为在springmvc的配置中配置了/匹配所有请求，
          此工程所有的请求(.do ,addUser,js/image/css)都会被springmvc解析,
          必须对所有的静态资源文件进行过滤放行 -->
-   <mvc:resources mapping="/resource/**" location="/resource/" />
+   <mvc:resources mapping="/resources/**" location="/resources/" />
         
    <!-- 拦截器定义 -->
   <!--  <mvc:interceptors>    
@@ -43,9 +43,9 @@
    <!-- 视图渲染 jsp/freemaker/velocity-->
    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <!-- 制定页面存放的路径 -->
-        <property name="prefix" value="/WEB-INF/pages/"></property>
+        <property name="prefix" value="/WEB-INF/views/"></property>
         <!-- 文件的后缀 -->
-        <property name="suffix" value=".jsp"></property>
+        <property name="suffix" value=".html"></property>
    </bean>  
    
    <bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter">
