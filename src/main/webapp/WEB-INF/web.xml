@@ -55,9 +55,12 @@
    
    <!-- 可以配*.do, *.action(了解) / (重点): 所有的请求都会被spring mvc解析，但必须对静态资源文件进行过滤放行，建议大家使用这种方式 
          /* : 不建议大家使用  -->
-   <servlet-mapping>
+  <servlet-mapping>     
+    <servlet-name>default</servlet-name>    
+    <url-pattern>*.html</url-pattern>       
+  </servlet-mapping>
+  <servlet-mapping>
      <servlet-name>springMvc</servlet-name>
      <url-pattern>/</url-pattern>
-   </servlet-mapping>
-  
+  </servlet-mapping>
 </web-app>

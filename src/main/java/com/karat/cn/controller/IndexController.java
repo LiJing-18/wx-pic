@@ -34,27 +34,36 @@ public class IndexController extends BaseController{
     @RequestMapping(value = "index",method = RequestMethod.GET)
     public String index(HttpServletRequest request){
         if(request.getSession().getAttribute("user")==null){
+        	System.out.println("跳转登陆页");
             return "login";
         }
+        System.out.println("跳转首页");
         return "index";
     }
 
-    @RequestMapping(value = "/login",method = RequestMethod.GET)
+    @RequestMapping(value = "login",method = RequestMethod.GET)
     public String login(){
-        return "/login";
+    	System.out.println("登录页");
+        return "login";
     }
 
-    @RequestMapping(value="/submitLogin",method=RequestMethod.POST)
+    @RequestMapping(value="submitLogin",method=RequestMethod.POST)
     @ResponseBody
     public ResponseData submitLogin(HttpServletRequest request,String loginname,String password){
-        UserLoginRequest loginRequest=new UserLoginRequest();
+        System.out.println("表单提交");
+        System.out.println(loginname+"=***="+password);
+        
+    	UserLoginRequest loginRequest=new UserLoginRequest();
         loginRequest.setUsername(loginname);
         loginRequest.setPassword(password);
+        //登陆
         UserLoginResponse loginResponse=loginService.login(loginRequest);
+        //返回数据
         ResponseData data=new ResponseData();
         data.setMessage(loginResponse.getMsg());
         data.setCode(loginResponse.getCode());
         data.setData("/");
+        
         if("000000".equals(loginResponse.getCode())){
             request.getSession().setAttribute("user","user");
         }
@@ -65,7 +74,7 @@ public class IndexController extends BaseController{
      * 退出
      * @return
      */
-    @RequestMapping(value="/logout",method =RequestMethod.GET)
+    @RequestMapping(value="logout",method =RequestMethod.GET)
     public String logout(HttpServletRequest request){
         try {
             request.getSession().removeAttribute("user");

@@ -4,7 +4,7 @@ import java.io.Serializable;
 import com.karat.cn.abs.AbstractResponse;
 
 /**
- * 注册返回信息
+ * 注册返回信息(vo)
  * @author 开发
  *
  */

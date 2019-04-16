@@ -1,7 +1,9 @@
 package com.karat.cn.abs;
 
 /**
- * Created by Administrator on 2016/5/29.
+ * 返回状态吗
+ * @author 开发
+ *
  */
 public class ResponseData {
 

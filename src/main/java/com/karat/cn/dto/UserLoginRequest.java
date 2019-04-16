@@ -4,7 +4,8 @@ import java.io.Serializable;
 import com.karat.cn.abs.AbstractRequest;
 
 /**
- * 登陆请求信息
+ * 
+ * 运输登陆对象(登陆请求信息)
  * @author 开发
  *
  */
