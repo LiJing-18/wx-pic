@@ -1,12 +1,10 @@
 package com.karat.cn.service.impl;
 
 import java.util.Date;
-
-import javax.annotation.Resource;
-
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DuplicateKeyException;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Criteria;
@@ -29,7 +27,7 @@ import com.karat.cn.service.LoginService;
 public class LoginServiceImpl implements LoginService{
 
 	
-	@Resource
+	@Autowired
 	private MongoTemplate mongoTemplate;
 	Logger logger= LoggerFactory.getLogger(LoginService.class);
 	

@@ -23,8 +23,8 @@ public class PhotoServiceImpl implements PhotoService{
 
 	@Autowired
 	private MongoTemplate mongoTemplate;
-	@Autowired
-	private JedisClient redis;
+	/*@Autowired
+	private JedisClient redis;*/
 	
 	
 	@SuppressWarnings("rawtypes")
@@ -40,7 +40,7 @@ public class PhotoServiceImpl implements PhotoService{
 	public ResultVo selectAllPhoto() {
 		ResultVo vo=null;
 		// TODO Auto-generated method stub
-		Set<String> set=redis.smembers(RedisKey.PHOTO);
+		/*Set<String> set=redis.smembers(RedisKey.PHOTO);
 		if(set.size()>0) {
 			System.out.println("all有缓存");
 			List<Photo> photos=new ArrayList<>();
@@ -48,7 +48,7 @@ public class PhotoServiceImpl implements PhotoService{
 				photos.add(JSONObject.parseObject(i, Photo.class));//json字符串转对象
 			});
 			return ResultVOUtil.success(photos);
-		}else {
+		}else {*/
 			System.out.println("all无缓存");
 			List<Photo> photos=mongoTemplate.findAll(Photo.class);
 			if(photos.size()>0){
@@ -56,15 +56,15 @@ public class PhotoServiceImpl implements PhotoService{
 				photos.forEach(p->{
 					photoList.add(JSONObject.toJSONString(p));//对象转json
 					//单品缓存
-					redis.set(RedisKey.SHOP+p.getId(), JSONObject.toJSONString(p));
+					//redis.set(RedisKey.SHOP+p.getId(), JSONObject.toJSONString(p));
 				});
 				//添加集合缓存
-				redis.sadd(RedisKey.PHOTO,photoList);
+				//redis.sadd(RedisKey.PHOTO,photoList);
 				vo=ResultVOUtil.success(photos);
 			}else{
 				vo=ResultVOUtil.error(201,"数据为空");
 			}
-		}
+		//}
 		return vo;
 	}
 
@@ -73,13 +73,13 @@ public class PhotoServiceImpl implements PhotoService{
 	public ResultVo selectById(String id) {
 		ResultVo vo=null;
 		// TODO Auto-generated method stub
-		String strId=redis.get(RedisKey.SHOP+id);
-		if(StringUtils.isNullOrEmpty(strId)) {
+		//String strId=redis.get(RedisKey.SHOP+id);
+		//if(StringUtils.isNullOrEmpty(strId)) {
 			System.out.println("无缓存");
 			if(!StringUtils.isNullOrEmpty(id)){
 				Photo photo=mongoTemplate.findById(id, Photo.class);
 				if(photo!=null){
-					redis.set(RedisKey.SHOP+photo.getId(), JSONObject.toJSONString(photo));
+					//redis.set(RedisKey.SHOP+photo.getId(), JSONObject.toJSONString(photo));
 					vo=ResultVOUtil.success(photo);
 				}else{
 					vo=ResultVOUtil.error(201, "信息为null");
@@ -87,10 +87,10 @@ public class PhotoServiceImpl implements PhotoService{
 			}else{
 				vo=ResultVOUtil.error(201, "请检查传入参数");
 			}
-		}else {
+		/*}else {
 			System.out.println("有缓存");
 			vo=ResultVOUtil.success(JSONObject.parseObject(strId, Photo.class));
-		}
+		}*/
 		return vo;
 	}
 

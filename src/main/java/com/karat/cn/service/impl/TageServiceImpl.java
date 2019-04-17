@@ -26,8 +26,8 @@ public class TageServiceImpl implements TagService{
 
 	@Autowired
 	private MongoTemplate mongoTemplate;
-	@Autowired
-	private JedisClient redis;
+	/*@Autowired
+	private JedisClient redis;*/
 	
 	@SuppressWarnings("rawtypes")
 	@Override
@@ -77,14 +77,14 @@ public class TageServiceImpl implements TagService{
 	@Override
 	public ResultVo selectAllTag() {
 		// TODO Auto-generated method stub
-		Set<String> set=redis.smembers(RedisKey.TAG);
+		/*Set<String> set=redis.smembers(RedisKey.TAG);
 		if(set.size()>0) {
 			List<Tag> tags=new ArrayList<>();
 			set.forEach(i->{
 				tags.add(JSONObject.parseObject(i, Tag.class));//json字符串转对象
 			});
 			return ResultVOUtil.success(tags);
-		}else {
+		}else {*/
 			//没有缓存
 			List<Tag> tags=mongoTemplate.findAll(Tag.class);
 			if(tags.size()>0){
@@ -93,12 +93,12 @@ public class TageServiceImpl implements TagService{
 					tagList.add(JSONObject.toJSONString(t));//对象转json
 				});
 				//添加缓存
-				redis.sadd(RedisKey.TAG,tagList);
+				//redis.sadd(RedisKey.TAG,tagList);
 				return ResultVOUtil.success(tags);
 			}else{
 				return ResultVOUtil.error(202,"数据为空");
 			}
-		}		
+		//}		
 	}
 	
 	@SuppressWarnings("rawtypes")

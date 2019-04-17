@@ -2,8 +2,7 @@ package com.karat.cn.service.impl;
 
 import java.util.List;
 
-import javax.annotation.Resource;
-
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
@@ -15,7 +14,7 @@ import com.karat.cn.service.GoodsService;
 @Repository
 public class GoodsServiceImpl implements GoodsService{
 
-	@Resource
+	@Autowired
 	private MongoTemplate mongoTemplate;
 	
 	@Override

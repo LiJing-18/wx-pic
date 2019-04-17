@@ -7,7 +7,8 @@
     "page/component/details/details",
     "page/component/list/list",
     "page/component/addTag/addTag",
-    "page/component/photo/photo"
+    "page/component/photo/photo",
+    "page/component/xiaohua/xiaohua"
   ],
   "window": {
     "navigationBarTextStyle": "#ffffff",
@@ -35,7 +36,7 @@
         "text": "分类"
       },
       {
-        "pagePath": "page/component/photo/photo",
+        "pagePath": "page/component/xiaohua/xiaohua",
         "iconPath": "image/32.png",
         "selectedIconPath": "image/31.png",
         "text": "上传"

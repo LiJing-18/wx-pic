@@ -1,0 +1,236 @@
+.ratingbar-stars-s1, .ratingbar-stars-s2, .ratingbar-stars-s3 {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
+
+/* class="ratingbar-stars"的控件下所包含的image控件的样式 */
+
+.ratingbar-stars-s1 image {
+  height: 26rpx;
+  width: 26rpx;
+  margin-right: 8rpx;
+}
+
+.ratingbar-stars-s2 image {
+  height: 37rpx;
+  width: 26rpx;
+}
+
+.ratingbar-stars-s3 image {
+  height: 34rpx;
+  width: 34rpx;
+}
+
+/* 关于注册弹窗 */
+
+.black-mask {
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 1111111;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.7);
+  align-items: center;
+  justify-content: center;
+}
+
+.style-con {
+  width: 650rpx;
+  height: 610rpx;
+  background-color: #eee;
+  border-radius: 20rpx;
+  position: relative;
+  align-items: center;
+}
+
+.titleimg {
+  width: 102rpx;
+  height: 53rpx;
+  margin-top: 36rpx;
+}
+
+.close-btn {
+  position: absolute;
+  top: 24rpx;
+  right: 25rpx;
+  width: 54rpx;
+  height: 54rpx;
+}
+
+.style1-box {
+  width: 557rpx;
+  height: 350rpx;
+  background-color: #fff;
+  border-radius: 10rpx;
+  align-items: center;
+  justify-content: space-around;
+  margin-top: 22rpx;
+  margin-bottom: 34rpx;
+}
+
+.up-box {
+  width: 100%;
+  height: 40rpx;
+  align-items: center;
+  justify-content: center;
+}
+
+.up1 {
+  font-size: 38rpx;
+  font-family: PingFangSC-Medium;
+}
+
+.up2 {
+  font-size: 38rpx;
+  font-family: PingFangSC-Medium;
+  color: #52c613;
+}
+.mid-box{
+  width: 100%;
+  height: 54rpx;
+  align-items: center;
+  justify-content: center;
+}
+.mid-box>image{
+  width: 54rpx;
+  height: 54rpx;
+  margin-left: 25rpx;
+}
+.mid1{
+  font-size:72rpx;
+  font-family:PingFangSC-Medium;
+}
+.down-box{
+  width: 460rpx;
+  line-height: 40rpx;
+  height: 80rpx;
+  font-size: 28rpx;
+  color: #505050;
+  text-align: center;
+}
+.down-box>image{
+  width: 26rpx;
+  height: 26rpx;
+}
+.confirmBTN {
+  width: 260rpx;
+  height: 78rpx;
+  background-color: #f7cd47;
+  border-radius: 39rpx;
+  position: relative;
+  font-size: 30rpx;
+  font-family: PingFangSC-Regular;
+  line-height: 78rpx;
+  text-align: center;
+}
+/* 注册奖励 */
+/* 注册奖励遮罩 */
+.registerReward-wrapper{
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  left: 0;
+  top: 0;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.6);
+  z-index: 111111111;
+}
+.registerReward-content {
+  width: 650rpx;
+  height: 610rpx;
+  border-radius: 20rpx;
+  background-color: #eee;
+  position: relative;
+  align-items: center;
+}
+
+.registerReward-box {
+  position: relative;
+  margin-top: 58rpx;
+}
+
+.registerReward-box>image {
+  width: 602rpx;
+  height: 377rpx;
+}
+
+.registerReward {
+  position: absolute;
+  left: 75rpx;
+  top: 0;
+  width: 450rpx;
+  height: 377rpx;
+  text-align: center;
+}
+.registerRewardv3{
+  width: 100%;
+  height: 71rpx;
+  align-items: center;
+  justify-content: center;
+}
+.registerRewardv3>image{
+  width: 71rpx;
+  height: 71rpx;
+  margin-left: 25rpx;
+}
+.registerRewardv4{
+  margin-top: 30rpx;
+  width: 100%;
+  line-height: 40rpx;
+  height: 80rpx;
+  font-size: 28rpx;
+  color: #505050;
+}
+.registerRewardv4>image{
+  width: 26rpx;
+  height: 26rpx;
+}
+
+.registerRewardt2 {
+  font-size: 30rpx;
+  font-family: PingFangSC-Medium;
+  margin-top: 109rpx;
+  margin-bottom: 33rpx;
+}
+
+.registerRewardt3 {
+  font-size: 79rpx;
+  font-family: PingFangSC-Medium;
+  font-weight: bold;
+}
+
+.registerRewardt4 {
+  margin-top: 10rpx;
+  font-size: 24rpx;
+  color: #707070;
+  font-family:PingFangSC-Medium;
+}
+
+.confirm-btn {
+  margin-top: 10rpx;
+  position: relative;
+  width: 260rpx;
+  height: 78rpx;
+  border-radius: 39rpx;
+  background-color: #F7CD47;
+  font-size: 30rpx;
+  line-height: 78rpx;
+  text-align: center;
+}
+
+.close {
+  position: absolute;
+  top: 23rpx;
+  right: 25rpx;
+  width: 54rpx;
+  height: 54rpx;
+}
+
+.close>image {
+  width: 54rpx;
+  height: 54rpx;
+}
