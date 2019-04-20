@@ -1,78 +1,29 @@
-<import src="../star-template/star-template.wxml" />
-<view class='container'>
-
-  <scroll-view class='content-scrollv' style='height:{{scrHeight}}' scroll-y="true" scroll-x="false">
-    <view class='wrapper-box' wx:for='{{dataArray}}' wx:key='{{item}}'>
-
-      <view class='wrapper-v flex-column-box'>
-
-        <view class='up-info-box flex-row-box'>
-          <view class='left-up-box flex-row-box'>
-            <image class='userheader' src='{{item.avatarurl}}'></image>
-            <view class='user-info flex-column-box'>
-              <text class='username'>{{item.nickname}}</text>
-              <view class='label' wx:if='{{item.isexcellent==1}}'>优质漫主</view>
+<view class="container">
+    <scroll-view class="page__bd" wx:for="{{authors}}" wx:key="{{index}}" scroll-y="true">
+        <navigator url="authors/authors" hover-class="none">
+            <view class="page__bd-head">
+                <view class="head-img">
+                    <image class="pic" src="{{item.headImg}}" mode="aspectFill" />
+                </view>
+                <view class="artic-author page-flex">{{item.userName}}</view>
             </view>
-          </view>
-          <view class='mid-up-left flex-row-box'>
-            <view class='work-view flex-column-box'>
-              <text>作品</text>
-              <text>{{item.booknum}}部</text>
+        </navigator>
+        <navigator url="read/read?id={{1}}">
+            <view class="page__bd-banner center">
+                <image class="bannerImg" src="{{item.bannerImg}}" alt="" mode="aspectFill" />
             </view>
-            <view class='money-view flex-column-box' wx:if='{{verify==1}}'>
-              <text>累积</text>
-              <view class='money flex-row-box'>
-                <text>{{item.countnum}}</text>
-                <image class='money-icon' src='../../imgs/money.png'></image>
-              </view>
+            <view class="page__bd-middle">
+                <view class="artic-title">{{item.articTitle}}</view>
+                <view class="artic-content">{{item.articContent}}</view>
             </view>
-          </view>
-        </view>
-        <view class='mid-info-box'>
-          <image class='bookimg' src='{{item.contactimg}}' mode='aspectFill'></image>
-          <view class='mid-up flex-row-box'>
-            <view class='score-box flex-row-box'>
-              <text>评分:</text>
-              <view class='score-view'>
-                <template is="star-template-s1" data="{{...item}}"></template>
-              </view>
-              <text>{{item.score}}</text>
+            <view class="page__bd-foot">
+                <view class="foot-lt clickTimes fl page-flex">{{item.clickTimes}}次点击</view>
+                <view class="foot-rt thumbUp">{{item.thumbUp}}
+                    <view class="finger">
+                        <image src="../../assets/images/pointer.png" mode="aspectFill" />
+                    </view>
+                </view>
             </view>
-            <text class='scorerank'>高于其他漫主{{item.hige}}%</text>
-          </view>
-
-        </view>
-        <view class='down-info-box flex-column-box'>
-          <view class='mid-down flex-row-box'>
-            <text space="nbsp">人   气</text>
-            <view class='hot-view'>
-              <template is="star-template-s2" data="{{...item}}"></template>
-            </view>
-          </view>
-          <view class='support-down flex-row-box'>
-            <text>打赏者</text>
-            <block wx:if='{{item.zcnum>0}}'>
-              <view class='memberview' wx:for='{{item.zcman}}' wx:key='{{jtem}}' wx:for-item='jtem'>
-                <image class='membericon' src='{{jtem}}'></image>
-                <view class='numview' wx:if='{{index==6 && item.zcnum>7}}'>+{{item.zcnum}}</view>
-              </view>
-            </block>
-            <text wx:else class='support-zero'>暂无</text>
-          </view>
-        </view>
-
-      </view>
-
-      <view class='gotodetail'>
-        <image src='../../imgs/gotopersonimg.png'></image>
-        <view class='gototext'>进入</view>
-      </view>
-    </view>
-  </scroll-view>
-
-
-  <template is="aboutRegister-template2" wx:if='{{showRegisterReward==true && verify==1}}'></template>
-
-  <template is="aboutRegister-template1" wx:if='{{showRegisterRemind==true && verify==1}}'></template>
-
+        </navigator>
+    </scroll-view>
 </view>

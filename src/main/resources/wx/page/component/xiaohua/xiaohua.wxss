@@ -1,294 +1,100 @@
-/* pages/homePage/homePage.wxss */
-@import "../star-template/star-template.wxss";
-page {
-  background-color: #eaeaea;
-}
-
-.title-header {
-  width: 100%;
-  height: 78rpx;
-  font-size: 28rpx;
-  font-family: PingFangSC-Medium;
-  font-weight: bold;
-  line-height: 78rpx;
-  text-align: center;
-}
-.allAuthor{
-  position: absolute;
-  right: 27rpx;
-  top: 0;
-  height: 78rpx;
-  text-decoration: underline;
-  color: #505050;
-  font-family:PingFangSC-Medium;
-  font-size: 24rpx;
-  line-height: 78rpx;
-}
-
-.content-scrollv {
-  width: 100%;
-}
-
-.wrapper-box {
-  width: 100%;
-  height: 720rpx;
-  position: relative;
-  margin-bottom: 30rpx;
-}
-
-.wrapper-v {
-  margin: 0 auto;
-  width: 720rpx;
-  height: 720rpx;
-  background-color: #fff;
-  border-radius: 10rpx;
-  overflow: hidden;
-}
-
-.up-info-box {
-  width: 100%;
-  height: 131rpx;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.left-up-box {
-  margin-left: 22rpx;
-  height: 100%;
-  align-items: center;
-}
-
-.userheader {
-  width: 90rpx;
-  height: 90rpx;
-  border-radius: 50%;
-  margin-right: 30rpx;
-}
-
-.user-info {
-  height: 90rpx;
-  justify-content: center;
-}
-
-.username {
-  font-size: 24rpx;
-  font-family: PingFangSC-Medium;
-  font-weight: bold;
-}
-
-.label {
-  margin-top: 10rpx;
-  width: 114rpx;
-  height: 44rpx;
-  border-radius: 10rpx;
-  background-color: #e4007f;
-  font-size: 21rpx;
-  line-height: 44rpx;
-  text-align: center;
-  color: #fff;
-}
-
-.mid-info-box {
-  width: 100%;
-  height: 470rpx;
-  position: relative;
-}
-
-.bookimg {
-  width: 100%;
-  height: 100%;
-}
-
-.mid-up {
-  width: 100%;
-  height: 66rpx;
-  position: absolute;
-  left: 0;
-  top: 0;
-  background-color: rgba(0, 0, 0, 0.6);
-  justify-content: space-between;
-  align-items: center;
-}
-
-.mid-up-left {
-  height: 100%;
-  align-items: center;
-  margin-right: 22rpx;
-}
-
-.work-view, .money-view {
-  width: 148rpx;
-  height: 78rpx;
-  border-radius: 20rpx;
-  border: 2rpx solid #f7cd47;
-  justify-content: center;
-  align-items: center;
-}
-
-.work-view {
-  margin-left: 23rpx;
-  margin-right: 12rpx;
-}
-
-.work-view>text, .money-view text {
-  font-family: PingFangSC-Medium;
-  font-weight: bold;
-  font-size: 22rpx;
-  line-height: 34rpx;
-}
-
-.money {
-  justify-content: center;
-  align-items: center;
-}
-
-.money-icon {
-  width: 20rpx;
-  height: 20rpx;
-  margin-left: 10rpx;
-}
-.score-box {
-  margin-left: 22rpx;
-  height: 26rpx;
-  align-items: center;
-}
-
-.score-box>text {
-  font-family: PingFangSC-Medium;
-  font-weight: bold;
-  color: #fff;
-  font-size: 22rpx;
-}
-
-.score-view {
-  margin-left: 14rpx;
-  margin-right: 6rpx;
-  height: 100%;
-}
-
-.scorerank {
-  margin-right: 22rpx;
-  font-size: 20rpx;
-  color: #fff;
-}
-
-.mid-down,.support-down {
-  width: 100%;
-  height: 59rpx;
-  align-items: center;
-}
-
-.mid-down>text {
-  margin-left: 22rpx;
-  margin-right: 16rpx;
-  font-family: PingFangSC-Medium;
-  font-weight: bold;
-  font-size: 24rpx;
-}
-
-.hot-view {
-  width: 240rpx;
-  height: 36rpx;
-}
-
-.down-info-box {
-  width: 100%;
-  height: 119rpx;
-  background-color: #fff;
-  align-items: center;
-}
-
-.support-down>text {
-  font-family: PingFangSC-Medium;
-  font-weight: bold;
-  font-size: 24rpx;
-  margin-left: 22rpx;
-  margin-right: 16rpx;
-}
-
-.memberview {
-  width: 44rpx;
-  height: 44rpx;
-  border-radius: 50%;
-  position: relative;
-  margin-right: 11rpx;
-}
-
-.membericon {
-  width: 44rpx;
-  height: 44rpx;
-  border-radius: 50%;
-}
-
-.numview {
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 44rpx;
-  height: 44rpx;
-  border-radius: 50%;
-  background-color: #000;
-  opacity: 0.5;
-  font-size: 16rpx;
-  line-height: 44rpx;
-  text-align: center;
-  color: #fff;
-  font-family:PingFangSC-Medium;
-}
-
-.gotodetail {
-  width: 219rpx;
-  height: 119rpx;
-  position: absolute;
-  right: 0;
-  bottom: 20rpx;
-}
-.gotodetail>image{
-  width: 219rpx;
-  height: 119rpx;
-}
-.gototext{
-  width: 219rpx;
-  height: 119rpx;
-  position: absolute;
-  right: 0;
-  bottom: 0;
-  font-family: PingFangSC-Medium;
-  font-weight: bold;
-  font-size: 36rpx;
-  line-height: 110rpx;
-  text-align: center;
-  color: #fff;
-}
-/* 漫币浮窗 */
-.mymoney{
-  position: fixed;
-  bottom: 0;
-  left: 9rpx;
-  width:133rpx;
-  height:134rpx;
-  z-index: 11111;
-}
-.mymoney>image{
-  width: 100%;
-  height: 100%;
-}
-.mymoney-content{
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  align-items: center;
-  justify-content: center;
-}
-.mymoney1{
-  font-size: 16rpx;
-  color: #fff;
-}
-.mymoney2{
-  font-family:PingFangSC-Semibold;
-  font-size: 38rpx;
-  font-weight: bold;
-  color: #fff;
-}
+/**index.wxss**/
+.page__hd {
+    width: 100%;
+    height: 100rpx;
+    background: #ffffff;
+  }
+  .page__hd:before {
+    content: "";
+    position: absolute;
+    top: 80rpx;
+    left: 0;
+    right: 0;
+    border-top: 1rpx solid #F6F6F6;
+  }
+  .page__hd-pagetitle {
+    font-size: 36rpx;
+    font-weight: bold;
+    color: #444;
+  }
+  .page__bd-head {
+    height: 128rpx;
+    margin-left: 30rpx;
+    display: flex;
+  }
+  .page__bd-head image {
+    width: 66rpx;
+    height: 66rpx;
+    line-height: 66rpx;
+    border-radius: 50%;
+  }
+  .artic-author {
+    display: inline-block;
+    margin-top: 8rpx;
+    /* margin-bottom: 40rpx; */
+    /* line-height: 28rpx; */
+    margin-left: 28rpx; 
+    font-size: 28rpx; 
+    color:#444;
+  }
+ 
+  .page__bd-banner image {
+    margin-top: -46rpx;
+    width: 688rpx;
+    height: 302rpx;
+    border-radius: 15rpx;
+  }
+  .page__bd-middle {
+    width: 688rpx;
+  }
+  .page__bd-middle .artic-title, .page__bd-middle .artic-content {
+    margin-left: 34rpx;
+  }
+  .page__bd-middle .artic-title, .page__bd-middle .artic-content {
+    overflow: hidden;
+    text-overflow:ellipsis;
+    display:-webkit-box; 
+    -webkit-box-orient:vertical;
+    -webkit-line-clamp:2;
+  } 
+  .page__bd-middle .artic-title {
+    margin-top: 32rpx;
+    margin-bottom: 32rpx;
+    font-size: 44rpx;
+    color: #444;
+    font-weight: bold;
+   
+  }
+  .page__bd-middle .artic-content {
+    font-size: 32rpx;
+    color: #7F7F7F;
+    margin-bottom: 28rpx;
+  }
+  .page__bd-foot {
+    height: 92rpx;
+  }
+  .page__bd-foot .foot-lt, .page__bd-foot .foot-rt {
+    color: #C6C6C6;
+    font-size: 28rpx;
+  }
+  .page__bd-foot .foot-lt {
+    margin-left: 34rpx;  
+  }
+  .page__bd-foot .foot-rt {
+    text-align: right;
+    margin-right: 72rpx;
+  }
+  
+  .finger image {
+    width: 28rpx;
+    height: 28rpx;
+    transform: translate(44rpx, -42rpx);
+  }
+  .page__bd-foot:after {
+    content: "";
+    position: absolute;
+    right: 0;
+    left: 0;
+    bottom: 18rpx;
+    border-top: 16rpx solid #F6F6F6;
+  }

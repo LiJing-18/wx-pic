@@ -32,6 +32,5 @@ public class Joke {
 		this.author = author;
 		this.content = content;
 	}
-	
-	
+		
 }

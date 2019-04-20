@@ -1,171 +1,133 @@
-// pages/homePage/homePage.js
+//index.js
+//获取应用实例
 const app = getApp()
+
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
-    showImages: [],
-    scrHeight: '',
-    cliHeight: '',
-    dataArray: [],
-    verify: 0,
-    showRegisterReward: false,
-    showRegisterRemind: false,
-    usergold: 0
-  },
-  // 审核开关
-  ajaxVerify: function () {
-    var self = this;
-    app.network.loadData('Userapi/auditstatus', {}, '')
-      .then(res => {
-        self.setData({
-          verify: res.data.status
-        })
-      })
-  },
-
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
-    if (options.logintype == 2) {
-      this.setData({
-        showRegisterRemind: true
-      })
-    } else if (options.logintype == 3) {
-      this.setData({
-        showRegisterReward: true
-      })
-    }
-    if (app.globalData.nickid == null || app.globalData.nickid == undefined) {
-      var voMemberData = wx.getStorageSync('voMemberData');
-      app.globalData.nickid = voMemberData.nickid;
-    }
-    this.excellentbookman();
-    this.ajaxVerify();
-  },
-  closeRegister: function () {
-    this.setData({
-      showRegisterRemind: false
-    })
-  },
-  hiddenRemind: function () {
-    this.setData({
-      showRegisterReward: false
-    })
-  },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-    var self = this;
-    let cliHeight = wx.getSystemInfoSync().windowHeight;
-    wx.createSelectorQuery().select('#header').boundingClientRect(function (rect) {
-      let scrHeight = cliHeight - rect.bottom;
-      self.setData({
-        scrHeight: scrHeight + 'px'
-      })
-    }).exec()
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onTabItemTap: function () {
-    this.excellentbookman();
+    authors: [{ 
+      articContent: 
+      '编剧有一个基本功，叫做拉片子。打开一部电影或电视剧，随看随停，从镜头运用到台词走位，一帧一段地悉心揣摩。', 
+      articleInfo: 
+      [{
+        articTitle:'跟苏轼学怎样拉史书',
+        authorDes:'路是自己选的，所以即使以后会跌倒，会受伤，也都要学会自己承受，自己疗伤。我们都是这样，学会长大的。',
+        bookAuthor:"东野圭吾",
+        bookCover:"http://www.520tingshu.com/pic/uploadimg/2016-5/20165621144242307.jpg",
+        bookName:"恶意",
+        headImg:"http://img2.3lian.com/2014/gif/10/9/25.jpg",
+        image1:"http://img15.3lian.com/2015/f1/127/d/52.jpg",
+        image2:
+"http://www.chinesecio.com/m/photos/get_image/file/e4efc709633795fa9b9aa6c3b21d2fa3.jpg",
+        readerNum:"105",
+        text1:
+        "　　编剧有一个基本功，叫做拉片子。打开一部电影或电视剧，随看随停，从镜头运用到台词走位，一帧一段地悉心揣摩。拉透了片子，大师的用心便了然于胸。同样的道理，想弄明白一段历史，最基本的要求，也得把相关史书拉上几遍才行。    可史书并不是那么好拉的。    最近知乎上有个问题，题主抱怨说有心想学历史，但大部分史书呆板枯燥，平铺直叙，读起来太难受了，向大家询问读史之法。我看到这问题，并不觉得他孤陋浅薄，反而心有戚戚焉，因为当年我也有同样困惑。    那时候我年幼无知，立志钻研历史，决定拉一拿前拉史书。可一翻开书页，眼前登时一黑。《史记》还好，司马迁写得有鼻子四史来说，有眼，可读性还不错;《三国志》勉强能看，",
+        text2:
+        " 　　大部分我所见的墨西哥人，便如上帝捏出来的粗泥娃娃没有用刀子再细雕，也没有上釉，做好了，只等太阳晒晒干便放到世上来了——当然，那是地下车中最最平民的样子。这儿的人类学博物馆中有些故事，述说古时住在这片土地上的居民，他们喜欢将小孩子的前额和后脑夹起好几年，然后放开，那些小孩子的头发成扁平的，脸孔当然也显得宽大些，在他们的审美眼光中，那便是美丽。而今的墨西哥人，仍然有着那样的脸谱，扁脸、浓眉、大眼宽鼻、厚唇，不算太清洁，衣着鲜艳如彩虹，表情木然而本分。而他们身体中除了墨西哥本地的血液之外，当然渗杂了西班牙人的成份，可是看上去他们仍是不近欧洲而更近印地安人的。常常，在地下车中挤着去某个地方，只因时间充分，也因舍不得那一张张已到了艺术极致的脸谱，情愿坐过了站再回头。",
+        updateTime:"昨天21:18",
+        userName:"马伯庸"
+      }], 
+      articTitle: '跟苏轼学怎样拉史书', 
+      bannerImg: '/image/A.png', 
+      clickTimes: '1008', 
+      headImg: '/image/A.png', 
+      thumbUp: '87', 
+      userName:'马伯庸'
+    }, {
+        articContent:
+          '编剧有一个基本功，叫做拉片子。打开一部电影或电视剧，随看随停，从镜头运用到台词走位，一帧一段地悉心揣摩。',
+        articleInfo:
+          [{
+            articTitle: '跟苏轼学怎样拉史书',
+            authorDes: '路是自己选的，所以即使以后会跌倒，会受伤，也都要学会自己承受，自己疗伤。我们都是这样，学会长大的。',
+            bookAuthor: "东野圭吾",
+            bookCover: "http://www.520tingshu.com/pic/uploadimg/2016-5/20165621144242307.jpg",
+            bookName: "恶意",
+            headImg: "http://img2.3lian.com/2014/gif/10/9/25.jpg",
+            image1: "http://img15.3lian.com/2015/f1/127/d/52.jpg",
+            image2:
+              "http://www.chinesecio.com/m/photos/get_image/file/e4efc709633795fa9b9aa6c3b21d2fa3.jpg",
+            readerNum: "105",
+            text1:
+              "　　编剧有一个基本功，叫做拉片子。打开一部电影或电视剧，随看随停，从镜头运用到台词走位，一帧一段地悉心揣摩。拉透了片子，大师的用心便了然于胸。同样的道理，想弄明白一段历史，最基本的要求，也得把相关史书拉上几遍才行。    可史书并不是那么好拉的。    最近知乎上有个问题，题主抱怨说有心想学历史，但大部分史书呆板枯燥，平铺直叙，读起来太难受了，向大家询问读史之法。我看到这问题，并不觉得他孤陋浅薄，反而心有戚戚焉，因为当年我也有同样困惑。    那时候我年幼无知，立志钻研历史，决定拉一拿前拉史书。可一翻开书页，眼前登时一黑。《史记》还好，司马迁写得有鼻子四史来说，有眼，可读性还不错;《三国志》勉强能看，",
+            text2:
+              " 　　大部分我所见的墨西哥人，便如上帝捏出来的粗泥娃娃没有用刀子再细雕，也没有上釉，做好了，只等太阳晒晒干便放到世上来了——当然，那是地下车中最最平民的样子。这儿的人类学博物馆中有些故事，述说古时住在这片土地上的居民，他们喜欢将小孩子的前额和后脑夹起好几年，然后放开，那些小孩子的头发成扁平的，脸孔当然也显得宽大些，在他们的审美眼光中，那便是美丽。而今的墨西哥人，仍然有着那样的脸谱，扁脸、浓眉、大眼宽鼻、厚唇，不算太清洁，衣着鲜艳如彩虹，表情木然而本分。而他们身体中除了墨西哥本地的血液之外，当然渗杂了西班牙人的成份，可是看上去他们仍是不近欧洲而更近印地安人的。常常，在地下车中挤着去某个地方，只因时间充分，也因舍不得那一张张已到了艺术极致的脸谱，情愿坐过了站再回头。",
+            updateTime: "昨天21:18",
+            userName: "马伯庸"
+          }],
+        articTitle: '跟苏轼学怎样拉史书',
+        bannerImg: '/image/A.png',
+        clickTimes: '1008',
+        headImg: '/image/A.png',
+        thumbUp: '87',
+        userName: '马伯庸'
+      }, {
+        articContent:
+          '编剧有一个基本功，叫做拉片子。打开一部电影或电视剧，随看随停，从镜头运用到台词走位，一帧一段地悉心揣摩。',
+        articleInfo:
+          [{
+            articTitle: '跟苏轼学怎样拉史书',
+            authorDes: '路是自己选的，所以即使以后会跌倒，会受伤，也都要学会自己承受，自己疗伤。我们都是这样，学会长大的。',
+            bookAuthor: "东野圭吾",
+            bookCover: "http://www.520tingshu.com/pic/uploadimg/2016-5/20165621144242307.jpg",
+            bookName: "恶意",
+            headImg: "http://img2.3lian.com/2014/gif/10/9/25.jpg",
+            image1: "http://img15.3lian.com/2015/f1/127/d/52.jpg",
+            image2:
+              "http://www.chinesecio.com/m/photos/get_image/file/e4efc709633795fa9b9aa6c3b21d2fa3.jpg",
+            readerNum: "105",
+            text1:
+              "　　编剧有一个基本功，叫做拉片子。打开一部电影或电视剧，随看随停，从镜头运用到台词走位，一帧一段地悉心揣摩。拉透了片子，大师的用心便了然于胸。同样的道理，想弄明白一段历史，最基本的要求，也得把相关史书拉上几遍才行。    可史书并不是那么好拉的。    最近知乎上有个问题，题主抱怨说有心想学历史，但大部分史书呆板枯燥，平铺直叙，读起来太难受了，向大家询问读史之法。我看到这问题，并不觉得他孤陋浅薄，反而心有戚戚焉，因为当年我也有同样困惑。    那时候我年幼无知，立志钻研历史，决定拉一拿前拉史书。可一翻开书页，眼前登时一黑。《史记》还好，司马迁写得有鼻子四史来说，有眼，可读性还不错;《三国志》勉强能看，",
+            text2:
+              " 　　大部分我所见的墨西哥人，便如上帝捏出来的粗泥娃娃没有用刀子再细雕，也没有上釉，做好了，只等太阳晒晒干便放到世上来了——当然，那是地下车中最最平民的样子。这儿的人类学博物馆中有些故事，述说古时住在这片土地上的居民，他们喜欢将小孩子的前额和后脑夹起好几年，然后放开，那些小孩子的头发成扁平的，脸孔当然也显得宽大些，在他们的审美眼光中，那便是美丽。而今的墨西哥人，仍然有着那样的脸谱，扁脸、浓眉、大眼宽鼻、厚唇，不算太清洁，衣着鲜艳如彩虹，表情木然而本分。而他们身体中除了墨西哥本地的血液之外，当然渗杂了西班牙人的成份，可是看上去他们仍是不近欧洲而更近印地安人的。常常，在地下车中挤着去某个地方，只因时间充分，也因舍不得那一张张已到了艺术极致的脸谱，情愿坐过了站再回头。",
+            updateTime: "昨天21:18",
+            userName: "马伯庸"
+          }],
+        articTitle: '跟苏轼学怎样拉史书',
+        bannerImg: '/image/A.png',
+        clickTimes: '1008',
+        headImg: '/image/A.png',
+        thumbUp: '87',
+        userName: '马伯庸'
+      }
+      ],
+    id: ''
   },
   onShow: function () {
-    if (app.globalData.nickid) {
-      this.catusergold();
-    }
-  },
-  // 跳转至查看全部漫主
-  gotoAllAuthor: function (e) {
-    wx.navigateTo({
-      url: '../allAuthor/allAuthor',
+    wx.showToast({
+      title: '加载中',
+      icon: 'loading',
+      duration: 500
     })
+    setTimeout(function () {
+      wx.hideToast()
+    }, 500);
   },
-  // 查看漫币数量
-  catusergold: function (e) {
-    var self = this;
-    let params = {
-      nickid: app.globalData.nickid
-    }
-    app.network.loadData('Userapi/catusergold', params, "")
-      .then(res => {
-        if (res.data.gold) {
-          self.setData({
-            usergold: res.data.gold
-          })
-        }
-      })
+  onLoad: function () {
+    var that = this;
+    wx.request({
+      url: 'https://www.easy-mock.com/mock/5a23a9a2ff38a436c591b6fa/getArticInfo',
+      success: function (res) {
+        console.log(res.data.data.index);
+        console.log(res.data.data.articleInfo);
 
-  },
-  // 查看优秀漫主
-  excellentbookman: function () {
-    var self = this;
-    let params = {
-      nickid: app.globalData.nickid || ''
-    }
-    app.network.loadData('Userapi/excellentbookman', params, "加载中")
-      .then(res => {
-        if (res.data.msg) {
-          self.setData({
-            dataArray: res.data.msg
-          })
-        }
-      })
-
-  },
-  // 充值
-  chongzhi: function () {
-    wx.navigateTo({
-      url: '../commonintroduce/commonintroduce?pagetype=0',
-    })
-  },
-  // 跳转到他人主页
-  personalPage: function (e) {
-    if (e.detail.formId != 'the formId is a mock one') {
-      let form = {
-        nickid: app.globalData.nickid,
-        formid: e.detail.formId
+        that.setData({
+          //authors: res.data.data.index,
+          //id: res.data.data.articleInfo
+        })
       }
-      app.network.loadData('Userapi/formopen', form, '')
-        .then(res => { })
-    }
-    if (app.globalData.nickid == e.currentTarget.dataset.nickid) {
-      wx.switchTab({
-        url: '../personalPage/personalPage',
-      })
-    } else {
-      wx.navigateTo({
-        url: '../otherPersonalPage/otherPersonalPage?nickid=' + e.currentTarget.dataset.nickid,
-      })
-    }
+    })
   },
   /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-    var shareObj = {};
-    if (!app.globalData.shareData) {
-      app.globalData.shareData = wx.getStorageSync('shareData');
-    }
-    app.globalData.shareData.forEach(function (item, index) {
-      if (item.type == 3) {
-        shareObj = item;
-      }
-    })
-    return {
-      title: shareObj.content,
-      path: 'pages/homePage/homePage',
-      imageUrl: shareObj.conimg,
-      success: function (res) {
+    * 页面相关事件处理函数--监听用户下拉动作
+    */
+  onPullDownRefresh: function () {
 
-      }
-    }
-  }
+  },
+  /**
+* 页面上拉触底事件的处理函数
+*/
+  onReachBottom: function () {
+
+  },
+
 })
