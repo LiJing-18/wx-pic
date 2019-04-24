@@ -2,7 +2,7 @@
 ### 前端展示图<br>
 ![首页](https://github.com/21karat/wx_pic/blob/master/src/main/webapp/pic/%E9%A6%96%E9%A1%B5.png)
 ![分类页](https://github.com/21karat/wx_pic/blob/master/src/main/webapp/pic/%E5%88%86%E7%B1%BB.png)
-![上传页](https://github.com/21karat/wx_pic/blob/master/src/main/webapp/pic/%E4%B8%8A%E4%BC%A0%E9%A1%B5.png) 
+![段子](https://github.com/21karat/wx_pic/blob/master/src/main/webapp/pic/%E6%AE%B5%E5%AD%90.png) 
 ![管理页](https://github.com/21karat/wx_pic/blob/master/src/main/webapp/pic/%E6%88%91%E7%9A%84.png) 
 
 
