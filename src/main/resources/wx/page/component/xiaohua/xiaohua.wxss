@@ -18,7 +18,7 @@
     color: #444;
   }
   .page__bd-head {
-    height: 128rpx;
+    height: 100rpx;
     margin-left: 30rpx;
     display: flex;
   }
@@ -53,12 +53,11 @@
   .page__bd-middle .artic-title, .page__bd-middle .artic-content {
     overflow: hidden;
     text-overflow:ellipsis;
-    display:-webkit-box; 
     -webkit-box-orient:vertical;
     -webkit-line-clamp:2;
   } 
   .page__bd-middle .artic-title {
-    margin-top: 32rpx;
+    margin-top: 0rpx;
     margin-bottom: 32rpx;
     font-size: 44rpx;
     color: #444;

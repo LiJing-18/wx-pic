@@ -27,17 +27,6 @@
          必须对所有的静态资源文件进行过滤放行 -->
    <mvc:resources mapping="/resources/**" location="/resources/" />
         
-   <!-- 拦截器定义 -->
-  <!--  <mvc:interceptors>    
-       <mvc:interceptor>
-       		个人中心也需要登陆  以admin开头的配置都会进行拦截
-           	<mvc:mapping path="/admin/**"></mvc:mapping> 
-            这个是设置不会进入拦截器的路径
-            <mvc:exclude-mapping path="/resource/**"/>
-            拦截器进入的类，返回false表示不会进入输入的路径
-            <bean class="com.karat.util.LoginInterceptor" /> 
-       </mvc:interceptor>
-   </mvc:interceptors> -->
             
    <!-- 视图渲染 jsp/freemaker/velocity-->
    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
@@ -47,19 +36,4 @@
         <property name="suffix" value=".html"></property>
    </bean>  
    
-   <bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter">
-		<property name="messageConverters">
-			<list>
-				<ref bean="jsonHttpMessageConverter" />
-			</list>
-		</property>
-   </bean>
- 
-   <bean id="jsonHttpMessageConverter" class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
-		<property name="supportedMediaTypes">
-			<list>
-				<value>application/json;charset=UTF-8</value>
-			</list>
-		</property>
-   </bean>
 </beans>

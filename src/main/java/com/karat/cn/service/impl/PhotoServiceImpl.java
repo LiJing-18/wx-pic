@@ -1,6 +1,6 @@
 package com.karat.cn.service.impl;
 
-import java.util.ArrayList;
+/*import java.util.ArrayList;*/
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -11,8 +11,8 @@ import org.springframework.stereotype.Repository;
 
 import com.alibaba.fastjson.JSONObject;
 import com.karat.cn.pojo.Photo;
-import com.karat.cn.redis.dao.JedisClient;
-import com.karat.cn.redis.redisKey.RedisKey;
+/*import com.karat.cn.redis.dao.JedisClient;
+import com.karat.cn.redis.redisKey.RedisKey;*/
 import com.karat.cn.service.PhotoService;
 import com.karat.cn.vo.ResultVOUtil;
 import com.karat.cn.vo.ResultVo;

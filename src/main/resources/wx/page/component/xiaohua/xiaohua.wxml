@@ -1,28 +1,18 @@
 <view class="container">
-    <scroll-view class="page__bd" wx:for="{{authors}}" wx:key="{{index}}" scroll-y="true">
-        <navigator url="authors/authors" hover-class="none">
+    <scroll-view class="page__bd" wx:for="{{duanzi}}" wx:key="{{index}}" scroll-y="true">
+        <navigator>
             <view class="page__bd-head">
                 <view class="head-img">
-                    <image class="pic" src="{{item.headImg}}" mode="aspectFill" />
+                    <image class="pic" src="/image/s1.jpg" mode="aspectFill" />
                 </view>
-                <view class="artic-author page-flex">{{item.userName}}</view>
-            </view>
-        </navigator>
-        <navigator url="read/read?id={{1}}">
-            <view class="page__bd-banner center">
-                <image class="bannerImg" src="{{item.bannerImg}}" alt="" mode="aspectFill" />
+                <view class="artic-author page-flex">{{item.author}}</view>
             </view>
             <view class="page__bd-middle">
-                <view class="artic-title">{{item.articTitle}}</view>
-                <view class="artic-content">{{item.articContent}}</view>
+                <view class="artic-title">{{item.title}}</view>
+                <view class="artic-content">{{item.content}}</view>
             </view>
             <view class="page__bd-foot">
-                <view class="foot-lt clickTimes fl page-flex">{{item.clickTimes}}次点击</view>
-                <view class="foot-rt thumbUp">{{item.thumbUp}}
-                    <view class="finger">
-                        <image src="../../assets/images/pointer.png" mode="aspectFill" />
-                    </view>
-                </view>
+                <view class="foot-lt clickTimes fl page-flex">{{item.click}}次点击</view>
             </view>
         </navigator>
     </scroll-view>

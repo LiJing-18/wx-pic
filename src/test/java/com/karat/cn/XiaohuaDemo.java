@@ -1,5 +1,7 @@
 package com.karat.cn;
 
+import java.util.List;
+
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -44,9 +46,26 @@ public class XiaohuaDemo {
                 // 标题对应的正文
                 String content = parent.select("div.content-img").text();
                 System.out.println(title+"=="+author+"&&&&&"+content);
-                Joke joke=new Joke(title,author,content);
+                
+                //随机点击量
+                String click=String.valueOf((int)(100+Math.random()*(1000-100+100)));
+                
+                Joke joke=new Joke(title,author,content,click);
                 mongoTemplate.insert(joke);
             }
         }
+	}
+	/**
+	 * 添加点击量
+	 */
+	@Test
+	public void update(){
+		List<Joke> joke=mongoTemplate.findAll(Joke.class);
+		joke.forEach(i->{
+			//随机点击量
+            String click=String.valueOf((int)(100+Math.random()*(1000-100+100)));
+            i.setClick(click);
+            mongoTemplate.save(i);
+		});
 	}
 }

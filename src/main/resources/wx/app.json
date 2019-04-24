@@ -39,7 +39,7 @@
         "pagePath": "page/component/xiaohua/xiaohua",
         "iconPath": "image/32.png",
         "selectedIconPath": "image/31.png",
-        "text": "上传"
+        "text": "段子"
       },
       {
         "pagePath": "page/component/user/user",

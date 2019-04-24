@@ -13,6 +13,7 @@ import org.junit.Test;
  * 测试POI
  */
 public class PoiTest {
+	@SuppressWarnings("resource")
 	@Test
 	public void Poi1Test() throws IOException {
 		// 创建工作簿

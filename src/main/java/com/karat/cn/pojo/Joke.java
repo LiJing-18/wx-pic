@@ -24,13 +24,18 @@ public class Joke {
 	private String author;
 	//正文
 	private String content;
+	//点击量
+	private String click;
 	
 	
-	public Joke(String title, String author, String content) {
+	public Joke(String title, String author, String content, String click) {
 		super();
 		this.title = title;
 		this.author = author;
 		this.content = content;
+		this.click = click;
 	}
+	
+	
 		
 }
