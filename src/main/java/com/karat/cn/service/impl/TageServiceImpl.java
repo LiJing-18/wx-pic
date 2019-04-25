@@ -13,13 +13,13 @@ import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.stereotype.Repository;
 
 import com.alibaba.fastjson.JSONObject;
-import com.karat.cn.dto.TagDto;
 import com.karat.cn.pojo.Tag;
 /*import com.karat.cn.redis.dao.JedisClient;
 import com.karat.cn.redis.redisKey.RedisKey;*/
 import com.karat.cn.service.TagService;
-import com.karat.cn.vo.ResultVOUtil;
-import com.karat.cn.vo.ResultVo;
+import com.karat.cn.util.dto.TagRequset;
+import com.karat.cn.util.vo.ResultVOUtil;
+import com.karat.cn.util.vo.ResultVo;
 
 @Repository
 public class TageServiceImpl implements TagService{
@@ -31,7 +31,7 @@ public class TageServiceImpl implements TagService{
 	
 	@SuppressWarnings("rawtypes")
 	@Override
-	public ResultVo addTag(TagDto tagDto) {
+	public ResultVo addTag(TagRequset tagDto) {
 		// TODO Auto-generated method stub
 		Tag tag=new Tag();
 		BeanUtils.copyProperties(tagDto, tag);
@@ -54,7 +54,7 @@ public class TageServiceImpl implements TagService{
 
 	@SuppressWarnings("rawtypes")
 	@Override
-	public ResultVo updateTag(TagDto tag) {
+	public ResultVo updateTag(TagRequset tag) {
 		// TODO Auto-generated method stub
 		Tag t=mongoTemplate.findById(tag.getId(), Tag.class);
 		t.setName(tag.getName());

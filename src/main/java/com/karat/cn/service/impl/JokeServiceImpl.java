@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.karat.cn.pojo.Joke;
 import com.karat.cn.service.JokeService;
-import com.karat.cn.vo.ResultVo;
+import com.karat.cn.util.vo.ResultVo;
 
 @Service
 public class JokeServiceImpl implements JokeService{

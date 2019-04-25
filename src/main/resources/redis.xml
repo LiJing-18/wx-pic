@@ -38,7 +38,7 @@
         <constructor-arg name="poolConfig" ref="jedisPoolConfig"></constructor-arg>
     </bean>
     <!--bean注入  -->
-    <bean id="jedisClient" class="com.karat.cn.redis.dao.impl.JedisClientImpl"/>
+    <bean id="jedisClient" class="com.karat.cn.other.redis.dao.impl.JedisClientImpl"/>
      
      
     <!-- jedis集群版配置 -->

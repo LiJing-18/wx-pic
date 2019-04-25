@@ -5,9 +5,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.alibaba.fastjson.JSON;
-import com.karat.cn.util.QiniuUtil;
-import com.karat.cn.vo.ResultVOUtil;
-import com.karat.cn.vo.ResultVo;
+import com.karat.cn.util.qiniu.QiniuUtil;
+import com.karat.cn.util.vo.ResultVOUtil;
+import com.karat.cn.util.vo.ResultVo;
 
 import io.swagger.annotations.Api;
 

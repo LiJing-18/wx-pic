@@ -6,8 +6,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.alibaba.fastjson.JSON;
-import com.karat.cn.dto.TagDto;
 import com.karat.cn.service.TagService;
+import com.karat.cn.util.dto.TagRequset;
 
 import io.swagger.annotations.Api;
 
@@ -30,7 +30,7 @@ public class TagController {
 	 * @return
 	 */
 	@RequestMapping(value="insert",produces="html/text;charset=UTF-8")
-	public String insert(@RequestBody TagDto dto){
+	public String insert(@RequestBody TagRequset dto){
 		return JSON.toJSONString(service.addTag(dto));
 	}
 	/**
@@ -39,7 +39,7 @@ public class TagController {
 	 * @return
 	 */
 	@RequestMapping(value="add",produces="html/text;charset=UTF-8")
-	public String add(TagDto dto){
+	public String add(TagRequset dto){
 		return JSON.toJSONString(service.addTag(dto));
 	}
 	/**

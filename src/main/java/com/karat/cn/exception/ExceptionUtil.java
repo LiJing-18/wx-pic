@@ -3,7 +3,7 @@ package com.karat.cn.exception;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.karat.cn.constants.ResponseCodeEnum;
+import com.karat.cn.util.constants.ResponseCodeEnum;
 
 public class ExceptionUtil{
 

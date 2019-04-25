@@ -1,6 +1,6 @@
 package com.karat.cn.exception;
 
-import com.karat.cn.constants.ResponseCodeEnum;
+import com.karat.cn.util.constants.ResponseCodeEnum;
 
 public class ValidateException extends RuntimeException {
 

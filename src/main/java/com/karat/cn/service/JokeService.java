@@ -1,7 +1,7 @@
 package com.karat.cn.service;
 
 
-import com.karat.cn.vo.ResultVo;
+import com.karat.cn.util.vo.ResultVo;
 
 public interface JokeService {
 	

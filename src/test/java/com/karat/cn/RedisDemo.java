@@ -7,8 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import com.karat.cn.redis.dao.JedisClient;
-import com.karat.cn.redis.redisKey.RedisKey;
+import com.karat.cn.other.redis.dao.JedisClient;
+import com.karat.cn.other.redis.redisKey.RedisKey;
 
 
 @RunWith(SpringJUnit4ClassRunner.class)

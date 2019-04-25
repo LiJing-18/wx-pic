@@ -14,7 +14,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.karat.cn.pojo.Joke;
-import com.karat.cn.util.ConnectionUtil;
+import com.karat.cn.util.http.ConnectionUtil;
 /**
  * 爬段子
  * @author 开发

@@ -1,9 +1,9 @@
 package com.karat.cn.service;
 
-import com.karat.cn.dto.UserLoginRequest;
-import com.karat.cn.dto.UserLoginResponse;
-import com.karat.cn.dto.UserRegisterRequest;
-import com.karat.cn.dto.UserRegisterResponse;
+import com.karat.cn.util.dto.UserLoginRequest;
+import com.karat.cn.util.dto.UserLoginResponse;
+import com.karat.cn.util.dto.UserRegisterRequest;
+import com.karat.cn.util.dto.UserRegisterResponse;
 
 public interface LoginService {
 

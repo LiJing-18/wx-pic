@@ -43,5 +43,5 @@
         <property name="messageListener" ref="messageListener"/>
     </bean>
     
-    <bean id="messageListener" class="com.karat.cn.activemq.SpringJmsListener"/>
+    <bean id="messageListener" class="com.karat.cn.other.activemq.SpringJmsListener"/>
 </beans>

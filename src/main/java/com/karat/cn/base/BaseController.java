@@ -2,8 +2,8 @@ package com.karat.cn.base;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.karat.cn.abs.ResponseData;
-import com.karat.cn.constants.ResponseCodeEnum;
+import com.karat.cn.util.constants.ResponseCodeEnum;
+import com.karat.cn.util.vo.ResponseData;
 
 
 public class BaseController {

@@ -13,18 +13,18 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.alibaba.fastjson.JSON;
+import com.karat.cn.other.redis.demo.RedisManager;
+import com.karat.cn.other.redis.lock.dao.RedisDistributeLock;
+import com.karat.cn.other.redis.lock.dao.impl.DefaultRedisDistributeLock;
+import com.karat.cn.other.zk.lock.lockDemo.DistributedLock;
 import com.karat.cn.pojo.Goods;
 import com.karat.cn.pojo.Order;
-import com.karat.cn.redis.demo.RedisManager;
-import com.karat.cn.redis.lock.dao.RedisDistributeLock;
-import com.karat.cn.redis.lock.dao.impl.DefaultRedisDistributeLock;
 import com.karat.cn.service.GoodsService;
 import com.karat.cn.service.OrderService;
-import com.karat.cn.util.TimeUtil;
-import com.karat.cn.util.OrderNumUtil;
-import com.karat.cn.vo.ResultVOUtil;
-import com.karat.cn.vo.ResultVo;
-import com.karat.cn.zk.lock.lockDemo.DistributedLock;
+import com.karat.cn.util.order.OrderNumUtil;
+import com.karat.cn.util.time.TimeUtil;
+import com.karat.cn.util.vo.ResultVOUtil;
+import com.karat.cn.util.vo.ResultVo;
 
 import io.swagger.annotations.Api;
 import redis.clients.jedis.Jedis;

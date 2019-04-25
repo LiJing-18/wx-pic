@@ -5,11 +5,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.karat.cn.abs.ResponseData;
 import com.karat.cn.base.BaseController;
-import com.karat.cn.dto.UserLoginRequest;
-import com.karat.cn.dto.UserLoginResponse;
 import com.karat.cn.service.LoginService;
+import com.karat.cn.util.dto.UserLoginRequest;
+import com.karat.cn.util.dto.UserLoginResponse;
+import com.karat.cn.util.vo.ResponseData;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.concurrent.ExecutorService;
