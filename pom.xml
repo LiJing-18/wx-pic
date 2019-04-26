@@ -249,14 +249,13 @@
 		<!--jwt 单点登陆所用得包  end-->
 		
 		
-		<!--  -->
 		<dependency>
 		    <groupId>org.jsoup</groupId>
 		    <artifactId>jsoup</artifactId>
 		    <version>1.11.2</version>
 		</dependency>
 		
-		<!--poi表格excl  -->
+		<!--poi表格excl  begin-->
 		<dependency>
 		    <groupId>org.apache.poi</groupId>
 		    <artifactId>poi</artifactId>
@@ -272,7 +271,19 @@
 		    <artifactId>poi-ooxml-schemas</artifactId>
 		    <version>3.16</version>
 		</dependency>
+		<!--poi表格excl  end-->
 		
+		
+		<!-- 邮箱验证begin -->
+		<!-- https://mvnrepository.com/artifact/javax.mail/mail -->
+		<dependency>
+		    <groupId>javax.mail</groupId>
+		    <artifactId>mail</artifactId>
+		    <version>1.4.7</version>
+		</dependency>
+
+
+		<!-- 邮箱验证end-->
   </dependencies>
   <build>
     <finalName>photo</finalName>
