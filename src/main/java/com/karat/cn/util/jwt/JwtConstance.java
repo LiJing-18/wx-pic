@@ -5,7 +5,7 @@ package com.karat.cn.util.jwt;
  *
  */
 public class JwtConstance {
-	
+	 
 	 public static final String JWT_KEY_USER_ID="uid";
 	 
 }

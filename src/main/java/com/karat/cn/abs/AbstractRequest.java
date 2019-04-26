@@ -2,7 +2,7 @@ package com.karat.cn.abs;
 
 import java.io.Serializable;
 /**
- * 请求
+ * 请求信息
  * @author 开发
  *
  */

@@ -2,40 +2,43 @@ package com.karat.cn.pojo;
 
 import java.util.Date;
 
+import org.springframework.data.mongodb.core.mapping.Document;
+
 /**
  * 用户信息
  * @author 开发
  *
  */
+@Document(collection="user")
 public class User {
-
-    private Integer id;
-
+	//主键
+    private String id;
+    //用户名
     private String username;
-
+    //用户密码
     private String password;
-
+    //真是姓名
     private String realname;
-
+    //虚拟姓名
     private String avatar;
-
+    //用户电话
     private String mobile;
-
+    //用户性别
     private String sex;
-
+    //用户状态
     private Integer status;
-
+    //创建时间
     private Date createTime;
 
-    public Integer getId() {
-        return id;
-    }
+    public String getId() {
+		return id;
+	}
 
-    public void setId(Integer id) {
-        this.id = id;
-    }
+	public void setId(String id) {
+		this.id = id;
+	}
 
-    public String getUsername() {
+	public String getUsername() {
         return username;
     }
 

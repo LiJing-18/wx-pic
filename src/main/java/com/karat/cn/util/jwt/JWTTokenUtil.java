@@ -25,16 +25,30 @@ public class JWTTokenUtil {
 		 return new SecretKeySpec(dc, signatureAlgorithm.getJcaName());
 	 }
 	
-	 //生成token
-	 public static String generatorToken(JwtInfo jwtInfo,int expire){	    
-		String token=Jwts.builder()
+	 /**
+	  * 生成token
+	  * @param jwtInfo	加密对象
+	  * @param expire	设置过期时间
+	  * @return
+	  * 
+	  * .claim	定义自己的属性(也可以用内置的)
+	  * .setExpiration	设置过期时间
+	  * .signWith	签名算法
+	  */
+	 public static String generatorToken(JwtInfo jwtInfo,int expire){	    			
+	    return 	Jwts.builder()
 				.claim(JwtConstance.JWT_KEY_USER_ID, jwtInfo.getUid())
 				.setExpiration(DateTime.now().plusSeconds(expire).toDate())
-				.signWith(SignatureAlgorithm.HS256,getKeyInstance()).compact();				
-	    return token;
+				.signWith(SignatureAlgorithm.HS256,getKeyInstance()).compact();
 	 }
 	 
-	 //根据token获取token中存入的信息 
+	 /**
+	  * 根据token获取token中存入的信息 
+	  * @param token
+	  * @return
+	  * 
+	  * 
+	  */
 	 public static JwtInfo getTokenInfo(String token){
 		 Jws<Claims> claimsJws=Jwts.parser().setSigningKey(getKeyInstance()).parseClaimsJws(token);
 		 Claims claims=claimsJws.getBody();

@@ -12,7 +12,7 @@ public class JwtService {
 	@Value("${jwt.expire}")
 	private int expire;//过期时间
 	
-	//获得token
+	//加密获得token
 	public String generatorToken(JwtInfo jwtInfo){
 		return JWTTokenUtil.generatorToken(jwtInfo, expire);
 	}

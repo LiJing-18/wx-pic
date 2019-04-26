@@ -11,6 +11,8 @@ public enum ResponseEnum {
     ;
     private String code;
     private String msg;
+    
+    
     private ResponseEnum(String code,String msg){
         this.msg = msg;
         this.code = code;

@@ -235,6 +235,7 @@
 		
 		
 		<!--jwt 单点登陆所用得包  begin-->
+		<!--生成token的算法封装好了  -->
 		<dependency>
 		    <groupId>io.jsonwebtoken</groupId>
 		    <artifactId>jjwt</artifactId>
@@ -281,8 +282,6 @@
 		    <artifactId>mail</artifactId>
 		    <version>1.4.7</version>
 		</dependency>
-
-
 		<!-- 邮箱验证end-->
   </dependencies>
   <build>
