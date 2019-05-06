@@ -1,29 +1,14 @@
+<!DOCTYPE html>
 <html>
 <head>
-	<meta charset="UTF-8">
-	<title>Insert title here</title>
+<meta charset="UTF-8">
+<title>登陆</title>
 </head>
-<body class="gray-bg login-content">
-<div class="lc-block animated flipInX" id="l-login">
-    <div>
-    </div>
-    <h3 class="text-center">欢迎使用后台管理系统</h3>
-    <form class="login" method="post" action="/photo/index/submitLogin">
-        <div class="input-group msg-error m-b-10">
-            <div class=""><i class="fa fa-minus-circle"></i><span>请输入账户名和密码</span></div>
-        </div>
-        <div class="input-group m-b-20"><label class="input-group-addon"><i class="fa fa-user"></i></label>
-            <div class="fg-line"><input type="text" name="loginname" id="loginname" class="form-control" placeholder="用户名"></div>
-        </div>
-        <div class="input-group m-b-10"><label class="input-group-addon"><i class="fa fa-lock"></i></label>
-            <div class="fg-line"><input type="password" name="password" id="password" class="form-control" placeholder=" 密码"></div>
-        </div>
-        <div>
-            <button type="submit" class="btn btn-block btn-lg btn-primary" id="loginBtn">登录</button>
-        </div>
+<body>
+	<form method="post" action="/photo/index/login">
+         <input type="text" name="txtUser" id="txtUser"  placeholder="用户名">
+         <input type="text" name="userPwd" id="userPwd"  placeholder="密码">
+         <button type="submit" id="loginBtn">登录</button>
     </form>
-</div>
-<script>
- 
-</script>
+</body>
 </html>

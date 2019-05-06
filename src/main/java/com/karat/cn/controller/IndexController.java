@@ -1,7 +1,9 @@
 package com.karat.cn.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.jms.core.JmsTemplate;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -12,6 +14,7 @@ import com.karat.cn.util.dto.UserLoginRequest;
 import com.karat.cn.util.dto.UserLoginResponse;
 import com.karat.cn.util.dto.UserRegisterRequest;
 import com.karat.cn.util.dto.UserRegisterResponse;
+import com.karat.cn.util.support.Anonymous;
 import com.karat.cn.util.vo.ResponseData;
 
 import javax.servlet.http.HttpServletRequest;
@@ -28,31 +31,21 @@ public class IndexController extends BaseController{
 
     @Autowired
     LoginService loginService;
-
+    @Autowired
+    JmsTemplate jmsTemplate;
+    
 
     /**
-     * 跳转页面
+     * 跳转登陆页面
      * @param request
      * @return
      */
-    @RequestMapping(value = "index",method = RequestMethod.GET)
-    public String index(HttpServletRequest request){
-        if(request.getSession().getAttribute("user")==null){
-        	System.out.println("跳转登陆页");
-            return "main";
-        }
-        System.out.println("跳转首页");
-        return "index";
+    @RequestMapping("index")
+    public String index(Model model){
+        System.out.println("跳转登陆页面");
+        return "login";
     }
-    @RequestMapping(value = "regis",method = RequestMethod.GET)
-    public String regis(HttpServletRequest request){
-        if(request.getSession().getAttribute("user")==null){
-        	System.out.println("跳转注册");
-            return "register";
-        }
-        System.out.println("跳转首页");
-        return "index";
-    }
+    
     /**
      * jwt登陆
      * @param txtUser
@@ -60,50 +53,22 @@ public class IndexController extends BaseController{
      * @param response
      * @return
      */
-    @SuppressWarnings("rawtypes")
+	@SuppressWarnings("rawtypes")
 	@RequestMapping(value = "/login")
+	@Anonymous
     public ResponseEntity login(String txtUser,String userPwd,HttpServletResponse response){
-    	System.out.println("登录页");
+    	System.out.println("登录开始");
     	UserLoginRequest request=new UserLoginRequest();
     	request.setUsername(txtUser);
     	request.setPassword(userPwd);
         //登陆
         UserLoginResponse loginResponse=loginService.login(request);
-        
+        //判断是否成功
         if("000000".equals(loginResponse.getCode())){
+        	//设置头信息中的token
         	response.addHeader("Set-Cookie", "access_token:"+loginResponse.getToken()+":Path=/:HttpOnly");
         }
         return ResponseEntity.ok(loginResponse);
-    }
-
-    /**
-     * 登陆
-     * @param request
-     * @param loginname
-     * @param password
-     * @return
-     */
-    @RequestMapping(value="submitLogin",method=RequestMethod.POST)
-    @ResponseBody
-    public ResponseData submitLogin(HttpServletRequest request,String loginname,String password){
-        System.out.println("表单提交");
-        System.out.println(loginname+"=***="+password);
-        
-    	UserLoginRequest loginRequest=new UserLoginRequest();
-        loginRequest.setUsername(loginname);
-        loginRequest.setPassword(password);
-        //登陆
-        UserLoginResponse loginResponse=loginService.login(loginRequest);
-        //返回数据
-        ResponseData data=new ResponseData();
-        data.setMessage(loginResponse.getMsg());
-        data.setCode(loginResponse.getCode());
-        data.setData("/");
-        
-        if("000000".equals(loginResponse.getCode())){
-            request.getSession().setAttribute("user","user");
-        }
-        return data;
     }
 
     
@@ -138,6 +103,23 @@ public class IndexController extends BaseController{
         }
         return data;
     }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     /**
      * 退出
      * @return
